@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>viewIconPublish</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Top-button/icons-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="viewIconPublish" fill="#9DAADF">
+            <polygon id="Shape" fill-rule="nonzero" points="17 10 17 12 19 12 19 20 5 20 5 12 7 12 7 10 3 10 3 22 21 22 21 10"></polygon>
+            <path d="M13,5.82842712 L13,16 L10.9978638,16 L10.9978638,5.83056336 L8.46446609,8.36396103 L7.05025253,6.94974747 L10.5857864,3.41421356 L10.9978638,3.00213623 L10.9978638,3 L11,3 L12,2 L12.7071068,2.70710678 L16.9497475,6.94974747 L15.5355339,8.36396103 L13,5.82842712 Z" id="Combined-Shape"></path>
+        </g>
+    </g>
+</svg>

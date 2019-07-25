@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>viewIconLiveTest</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Top-button/icons-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="viewIconLiveTest" fill="#9DAADF">
+            <g id="Live-test" transform="translate(5.000000, 2.000000)">
+                <path d="M12,14 L12,2 L2,2 L2,14 L12,14 Z M12,16 L2,16 L2,18 L12,18 L12,16 Z M1,0 L13,0 C13.5522847,-1.01453063e-16 14,0.44771525 14,1 L14,19 C14,19.5522847 13.5522847,20 13,20 L1,20 C0.44771525,20 6.76353751e-17,19.5522847 0,19 L0,1 C-6.76353751e-17,0.44771525 0.44771525,1.01453063e-16 1,0 Z M5,5 L10,8.01418756 L5,11 L5,5 Z" id="Combined-Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>
