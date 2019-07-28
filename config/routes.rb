@@ -13,4 +13,6 @@ Rails.application.routes.draw do
       resources :sections, only: [:new, :create]
     end
   end
+ resources :charges
+
 end 

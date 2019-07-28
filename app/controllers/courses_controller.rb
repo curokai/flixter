@@ -5,7 +5,10 @@ class CoursesController < ApplicationController
  
   def show
     @course=Course.find(params[:id])
+    return render('show.html.erb', local:{})
   end
+
+
 
 
 end
