@@ -12,4 +12,7 @@
  * It is generally better to create a new file per style scope.
  
 @import "bootstrap";
+ *= require_self
+ *= require_tree .
+ *= require jquery-ui
  */
