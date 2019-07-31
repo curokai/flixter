@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)https://online.bootcampspot.com/foundations/7 -->
+<html lang="en" class="wf-opensans-n7-active wf-opensans-i7-active wf-opensans-n8-active wf-opensans-i8-active wf-opensans-i4-active wf-opensans-n3-active wf-opensans-i3-active wf-opensans-n4-active wf-opensans-n6-active wf-opensans-i6-active wf-oratorstd-n4-active wf-oratorstd-i4-active wf-active"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" media="screen" href="./Foundations_ Lesson 7_linkedlist_files/marketing-5e5a20470be887b58f220b5555c9b99eccf8b9464e305c3be9785f09398358af.css">
+    <script type="text/javascript" async="" src="./Foundations_ Lesson 7_linkedlist_files/cynq5t9i"></script><script async="" src="./Foundations_ Lesson 7_linkedlist_files/analytics.js.download"></script><script type="text/javascript" async="" src="./Foundations_ Lesson 7_linkedlist_files/bb3a5598dcc59dffa9ab13638a8cd5d4993eeb6b.2.js.download"></script><script type="text/javascript" async="" src="./Foundations_ Lesson 7_linkedlist_files/i.js.download"></script><script src="./Foundations_ Lesson 7_linkedlist_files/9749.js.download" async="" type="text/javascript"></script><script async="" src="./Foundations_ Lesson 7_linkedlist_files/fbds.js.download"></script><script src="./Foundations_ Lesson 7_linkedlist_files/application-6af866d99d1db6fa92e079cdb6e49919c362a85d7048380a6f4d276d925f66ba.js.download"></script><style type="text/css"></style>
+    <script src="./Foundations_ Lesson 7_linkedlist_files/free_trial-6d6d5e31f7d3a7a51fb80736b49c470970e6832a7345a7401920a8beb6de281e.js.download"></script>
+
+    <!-- CKEditor is loaded outside the Asset Pipeline -->
+    <script src="./Foundations_ Lesson 7_linkedlist_files/ckeditor.js.download"></script><style>.cke{visibility:hidden;}</style>
+    <script src="./Foundations_ Lesson 7_linkedlist_files/config.js.download"></script>
+
+    <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="23ANxMjaHixDnfW1N56nMd/QKCjxDRIymHbHqdH+FRkHqBelKc+p3Y2UkOK8KEkg72RQ4g1Y7M1omYrHxzyQCw==">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="Hp2_fnorKeGuAV_ZAhiKqMfH8DAcAg19Fiq_vY1IrMs">
+
+    <title>Foundations: Lesson 7</title>
+
+      <link rel="icon" type="image/png" href="https://online.bootcampspot.com/assets/marketing_pages/homepage/Trilogy_Ed_favicon_transparent-a0cdd362524a5f8b7d4987993af0af77acb1272b2a7df1deca848282efccbc72.ico">
+
+    <!-- TypeKit -->
+      <script src="./Foundations_ Lesson 7_linkedlist_files/fmj7zgm.js.download"></script>
+      <style type="text/css">.tk-open-sans{font-family:"open-sans",sans-serif;}.tk-orator-std{font-family:"orator-std",monospace;}</style><style type="text/css">@font-face{font-family:tk-open-sans-n7;src:url(https://use.typekit.net/af/2553b3/000000000000000000011c34/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3) format("woff2"),url(https://use.typekit.net/af/2553b3/000000000000000000011c34/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3) format("woff"),url(https://use.typekit.net/af/2553b3/000000000000000000011c34/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3) format("opentype");font-weight:700;font-style:normal;}@font-face{font-family:tk-open-sans-i7;src:url(https://use.typekit.net/af/8f2f8d/000000000000000000011c35/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3) format("woff2"),url(https://use.typekit.net/af/8f2f8d/000000000000000000011c35/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3) format("woff"),url(https://use.typekit.net/af/8f2f8d/000000000000000000011c35/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3) format("opentype");font-weight:700;font-style:italic;}@font-face{font-family:tk-open-sans-n8;src:url(https://use.typekit.net/af/2eef30/000000000000000000011c36/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3) format("woff2"),url(https://use.typekit.net/af/2eef30/000000000000000000011c36/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3) format("woff"),url(https://use.typekit.net/af/2eef30/000000000000000000011c36/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3) format("opentype");font-weight:800;font-style:normal;}@font-face{font-family:tk-open-sans-i8;src:url(https://use.typekit.net/af/2da2f6/000000000000000000011c37/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3) format("woff2"),url(https://use.typekit.net/af/2da2f6/000000000000000000011c37/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3) format("woff"),url(https://use.typekit.net/af/2da2f6/000000000000000000011c37/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3) format("opentype");font-weight:800;font-style:italic;}@font-face{font-family:tk-open-sans-i4;src:url(https://use.typekit.net/af/4c54ad/000000000000000000011c38/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3) format("woff2"),url(https://use.typekit.net/af/4c54ad/000000000000000000011c38/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3) format("woff"),url(https://use.typekit.net/af/4c54ad/000000000000000000011c38/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3) format("opentype");font-weight:400;font-style:italic;}@font-face{font-family:tk-open-sans-n3;src:url(https://use.typekit.net/af/1ade3e/000000000000000000011c39/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3) format("woff2"),url(https://use.typekit.net/af/1ade3e/000000000000000000011c39/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3) format("woff"),url(https://use.typekit.net/af/1ade3e/000000000000000000011c39/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3) format("opentype");font-weight:300;font-style:normal;}@font-face{font-family:tk-open-sans-i3;src:url(https://use.typekit.net/af/47e8f0/000000000000000000011c3a/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3) format("woff2"),url(https://use.typekit.net/af/47e8f0/000000000000000000011c3a/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3) format("woff"),url(https://use.typekit.net/af/47e8f0/000000000000000000011c3a/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3) format("opentype");font-weight:300;font-style:italic;}@font-face{font-family:tk-open-sans-n4;src:url(https://use.typekit.net/af/827015/000000000000000000011c3b/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3) format("woff2"),url(https://use.typekit.net/af/827015/000000000000000000011c3b/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3) format("woff"),url(https://use.typekit.net/af/827015/000000000000000000011c3b/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3) format("opentype");font-weight:400;font-style:normal;}@font-face{font-family:tk-open-sans-n6;src:url(https://use.typekit.net/af/270ae4/000000000000000000011c3c/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3) format("woff2"),url(https://use.typekit.net/af/270ae4/000000000000000000011c3c/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3) format("woff"),url(https://use.typekit.net/af/270ae4/000000000000000000011c3c/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3) format("opentype");font-weight:600;font-style:normal;}@font-face{font-family:tk-open-sans-i6;src:url(https://use.typekit.net/af/46b75c/000000000000000000011c3d/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3) format("woff2"),url(https://use.typekit.net/af/46b75c/000000000000000000011c3d/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3) format("woff"),url(https://use.typekit.net/af/46b75c/000000000000000000011c3d/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3) format("opentype");font-weight:600;font-style:italic;}@font-face{font-family:tk-orator-std-n4;src:url(https://use.typekit.net/af/59297e/000000000000000000013036/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3) format("woff2"),url(https://use.typekit.net/af/59297e/000000000000000000013036/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3) format("woff"),url(https://use.typekit.net/af/59297e/000000000000000000013036/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3) format("opentype");font-weight:400;font-style:normal;}@font-face{font-family:tk-orator-std-i4;src:url(https://use.typekit.net/af/a51682/000000000000000000013037/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3) format("woff2"),url(https://use.typekit.net/af/a51682/000000000000000000013037/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3) format("woff"),url(https://use.typekit.net/af/a51682/000000000000000000013037/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3) format("opentype");font-weight:400;font-style:italic;}</style><script>try{Typekit.load({ async: true });}catch(e){}</script>
+      <script>(function() {
+        var _fbq = window._fbq || (window._fbq = []);
+        if (!_fbq.loaded) {
+          var fbds = document.createElement('script');
+          fbds.async = true;
+          fbds.src = '//connect.facebook.net/en_US/fbds.js';
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(fbds, s);
+          _fbq.loaded = true;
+        }
+        _fbq.push(['addPixelId', '948223488529411']);
+        })();
+        window._fbq = window._fbq || [];
+        window._fbq.push(['track', 'PixelInitialized', {}]);
+      </script>
+
+    <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=948223488529411&amp;ev=PixelInitialized" /></noscript>
+
+    <link href="./Foundations_ Lesson 7_linkedlist_files/css" rel="stylesheet" type="text/css">
+    <link href="./Foundations_ Lesson 7_linkedlist_files/css(1)" rel="stylesheet" type="text/css">
+
+    <!-- Kissmetrics JS snippet Start -->
+      <script type="text/javascript">
+        var _kmq = _kmq || [];
+        var _kmk = _kmk || 'bb3a5598dcc59dffa9ab13638a8cd5d4993eeb6b';
+        function _kms(u){
+          setTimeout(function(){
+            var d = document, f = d.getElementsByTagName('script')[0],
+            s = d.createElement('script');
+            s.type = 'text/javascript'; s.async = true; s.src = u;
+            f.parentNode.insertBefore(s, f);
+          }, 1);
+        }
+        _kms('//i.kissmetrics.com/i.js');
+        _kms('//scripts.kissmetrics.com/' + _kmk + '.2.js');
+      </script>
+    <!-- Kissmetrics JS snippet End -->
+
+  <style type="text/css">@font-face{font-family:open-sans;src:url(https://use.typekit.net/af/2553b3/000000000000000000011c34/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3) format("woff2"),url(https://use.typekit.net/af/2553b3/000000000000000000011c34/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3) format("woff"),url(https://use.typekit.net/af/2553b3/000000000000000000011c34/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3) format("opentype");font-weight:700;font-style:normal;}@font-face{font-family:open-sans;src:url(https://use.typekit.net/af/8f2f8d/000000000000000000011c35/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3) format("woff2"),url(https://use.typekit.net/af/8f2f8d/000000000000000000011c35/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3) format("woff"),url(https://use.typekit.net/af/8f2f8d/000000000000000000011c35/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i7&v=3) format("opentype");font-weight:700;font-style:italic;}@font-face{font-family:open-sans;src:url(https://use.typekit.net/af/2eef30/000000000000000000011c36/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3) format("woff2"),url(https://use.typekit.net/af/2eef30/000000000000000000011c36/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3) format("woff"),url(https://use.typekit.net/af/2eef30/000000000000000000011c36/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n8&v=3) format("opentype");font-weight:800;font-style:normal;}@font-face{font-family:open-sans;src:url(https://use.typekit.net/af/2da2f6/000000000000000000011c37/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3) format("woff2"),url(https://use.typekit.net/af/2da2f6/000000000000000000011c37/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3) format("woff"),url(https://use.typekit.net/af/2da2f6/000000000000000000011c37/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i8&v=3) format("opentype");font-weight:800;font-style:italic;}@font-face{font-family:open-sans;src:url(https://use.typekit.net/af/4c54ad/000000000000000000011c38/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3) format("woff2"),url(https://use.typekit.net/af/4c54ad/000000000000000000011c38/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3) format("woff"),url(https://use.typekit.net/af/4c54ad/000000000000000000011c38/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3) format("opentype");font-weight:400;font-style:italic;}@font-face{font-family:open-sans;src:url(https://use.typekit.net/af/1ade3e/000000000000000000011c39/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3) format("woff2"),url(https://use.typekit.net/af/1ade3e/000000000000000000011c39/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3) format("woff"),url(https://use.typekit.net/af/1ade3e/000000000000000000011c39/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n3&v=3) format("opentype");font-weight:300;font-style:normal;}@font-face{font-family:open-sans;src:url(https://use.typekit.net/af/47e8f0/000000000000000000011c3a/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3) format("woff2"),url(https://use.typekit.net/af/47e8f0/000000000000000000011c3a/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3) format("woff"),url(https://use.typekit.net/af/47e8f0/000000000000000000011c3a/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i3&v=3) format("opentype");font-weight:300;font-style:italic;}@font-face{font-family:open-sans;src:url(https://use.typekit.net/af/827015/000000000000000000011c3b/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3) format("woff2"),url(https://use.typekit.net/af/827015/000000000000000000011c3b/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3) format("woff"),url(https://use.typekit.net/af/827015/000000000000000000011c3b/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3) format("opentype");font-weight:400;font-style:normal;}@font-face{font-family:open-sans;src:url(https://use.typekit.net/af/270ae4/000000000000000000011c3c/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3) format("woff2"),url(https://use.typekit.net/af/270ae4/000000000000000000011c3c/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3) format("woff"),url(https://use.typekit.net/af/270ae4/000000000000000000011c3c/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n6&v=3) format("opentype");font-weight:600;font-style:normal;}@font-face{font-family:open-sans;src:url(https://use.typekit.net/af/46b75c/000000000000000000011c3d/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3) format("woff2"),url(https://use.typekit.net/af/46b75c/000000000000000000011c3d/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3) format("woff"),url(https://use.typekit.net/af/46b75c/000000000000000000011c3d/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i6&v=3) format("opentype");font-weight:600;font-style:italic;}@font-face{font-family:orator-std;src:url(https://use.typekit.net/af/59297e/000000000000000000013036/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3) format("woff2"),url(https://use.typekit.net/af/59297e/000000000000000000013036/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3) format("woff"),url(https://use.typekit.net/af/59297e/000000000000000000013036/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3) format("opentype");font-weight:400;font-style:normal;}@font-face{font-family:orator-std;src:url(https://use.typekit.net/af/a51682/000000000000000000013037/27/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3) format("woff2"),url(https://use.typekit.net/af/a51682/000000000000000000013037/27/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3) format("woff"),url(https://use.typekit.net/af/a51682/000000000000000000013037/27/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=i4&v=3) format("opentype");font-weight:400;font-style:italic;}</style><script src="./Foundations_ Lesson 7_linkedlist_files/f.txt"></script><script type="text/javascript" src="./Foundations_ Lesson 7_linkedlist_files/config.js(1).download"></script><link rel="stylesheet" type="text/css" href="./Foundations_ Lesson 7_linkedlist_files/editor.css"><script type="text/javascript" src="./Foundations_ Lesson 7_linkedlist_files/en.js.download"></script><script type="text/javascript" src="./Foundations_ Lesson 7_linkedlist_files/styles.js.download"></script><script type="text/javascript" src="./Foundations_ Lesson 7_linkedlist_files/plugin.js.download"></script><script type="text/javascript" src="./Foundations_ Lesson 7_linkedlist_files/plugin.js(1).download"></script><link rel="stylesheet" type="text/css" href="./Foundations_ Lesson 7_linkedlist_files/scayt.css"><link rel="stylesheet" type="text/css" href="./Foundations_ Lesson 7_linkedlist_files/wsc.css"><script type="text/javascript" src="./Foundations_ Lesson 7_linkedlist_files/en.js(1).download"></script><script type="text/javascript" src="./Foundations_ Lesson 7_linkedlist_files/ace.js.download"></script><script type="text/javascript" src="./Foundations_ Lesson 7_linkedlist_files/PBSyntaxHighlighter.js.download"></script><style id="cke_ui_color" type="text/css"></style><style id="ace_editor.css">.ace_editor {position: relative;overflow: hidden;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;min-width: 100%;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;text-indent: -1em;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: inherit;color: inherit;z-index: 1000;opacity: 1;text-indent: 0;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;}.ace_text-layer {font: inherit !important;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_smooth-blinking .ace_cursor {-webkit-transition: opacity 0.18s;transition: opacity 0.18s;}.ace_editor.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}.ace_line .ace_fold {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.1));background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {-webkit-transition: opacity 0.4s ease 0.05s;transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {-webkit-transition: opacity 0.05s ease 0.05s;transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}
+/*# sourceURL=ace/css/ace_editor.css */</style><style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style><style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style><script type="text/javascript" src="./Foundations_ Lesson 7_linkedlist_files/ext-whitespace.js.download"></script><link rel="stylesheet" type="text/css" href="./Foundations_ Lesson 7_linkedlist_files/style.css"><link rel="stylesheet" type="text/css" href="./Foundations_ Lesson 7_linkedlist_files/style.css"></head>
+
+  <body data-env="production" class="signed-in foundations show unsticky-footer">
+
+      <link rel="stylesheet" media="screen" href="./Foundations_ Lesson 7_linkedlist_files/default_navigation-0b9d523da536a876e0f61aab99ed426b55334094e713d65c8b7fcab444707fbf.css">
+<script src="./Foundations_ Lesson 7_linkedlist_files/notifications-6e634d2b5925abf2f3a9ff91264e09282cb7a2aa00a9e372197b54f0db36a8ff.js.download"></script>
+
+<div class="topnav-container-placeholder"></div>
+<div class="topnav-container">
+
+  <div class="brand-container">
+      <a class="logo-link" href="http://online.bootcampspot.com/">
+        <img class="logo -uni_logo" alt="University Logo" src="./Foundations_ Lesson 7_linkedlist_files/logo.jpg">
+</a>  </div>
+
+  <div class="navigation-container">
+
+    <!-- Navigation shown on Desktop -->
+      <ul class="left-nav-list">
+  <li class="dropdown left-nav-item">
+    <a href="https://online.bootcampspot.com/courses" class="dropdown-toggle main-nav-link" id="bootcamp-prep-dropdown-link" role="button" aria-haspopup="true" aria-expanded="false">
+      Coding Boot Camp
+    </a>
+
+  </li>
+
+    <li class="left-nav-item">
+      <a class="main-nav-link" href="https://online.bootcampspot.com/modules/workspace">Workspace</a>
+    </li>
+    <li class="left-nav-item">
+      <a target="_blank" rel="noopener noreferrer" href="http://career.bootcampspot.com/">Career Services<span class="hidden-text">Link opens in new tab</span></a>
+    </li>
+
+  <li class="left-nav-item"><a id="timeline-link" class="main-nav-link" href="https://online.bootcampspot.com/timeline">Timeline</a></li>
+
+  <li class="left-nav-item"><a id="student-support-link" class="main-nav-link" onclick="gaEventTrigger(&#39;Navigation&#39;, &#39;Select&#39;, &#39;Support Link&#39;)" href="https://online.bootcampspot.com/student-support">Support</a></li>
+
+</ul>
+
+
+    <!-- Navigation shown on Mobile -->
+    <nav class="navbar navbar-default mobile-navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mobile-top-navigation-target" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="mobile-top-navigation-target">
+      <ul class="nav navbar-nav">
+        <li>
+          <a class="-bold" href="https://online.bootcampspot.com/courses">Dashboard</a>
+        </li>
+
+
+          <li class="left-nav-item">
+            <a href="https://online.bootcampspot.com/modules/workspace">Workspace</a>
+          </li>
+          <li class="left-nav-item">
+            <a target="_blank" rel="noopener noreferrer" href="http://career.bootcampspot.com/">Career Services<span class="hidden-text">Link opens in new tab</span></a>
+          </li>
+        <li>
+          <a href="https://online.bootcampspot.com/timeline">Timeline</a>
+        </li>
+        <li>
+          <a onclick="gaEventTrigger(&#39;Navigation&#39;, &#39;Select&#39;, &#39;Support Link&#39;)" href="https://online.bootcampspot.com/student-support">Support</a>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  </div>
+
+  <!-- Nofication Bell and User -->
+  <div class="right-side-container">
+      <div id="topnav-user-container">
+        <img id="top-nav-bell" alt="Notification Bell" role="button" tabindex="0" src="./Foundations_ Lesson 7_linkedlist_files/notification_bell-c1c1925f107e6606f89686fb9770ff7c03a82279722c434131d4910d541f385b.png" aria-expanded="false">
+        <span class="notification-number hide-number" id="notification-number" data-firebase-key="AIzaSyDDD3Qvri09_ogLU4UqeBTErr67HuXuWRo" data-firebase-auth="firehose-production.firebaseapp.com" data-firebase-database="https://firehose-production.firebaseio.com" data-firebase-storage="firehose-production.appspot.com" data-firebase-messaging="401914555144" data-firebase-channel="user=30831" aria-expanded="false">0</span>
+        <div class="top-nav-bell-drop-down-holder" style="display:none;">
+          <div id="top-nav-bell-drop-down" style="display:none;"><div id="addNotifications"></div><div class="drop-down" id="1439311"><span class="notification-title">New feedback from Israel: </span>Your mentor just posted some notes about your last session together.  <a href="https://online.bootcampspot.com/students/mentor_sessions/12725/student_sessions/new" id="1439311-link" target="_blank">Click here to read the notes and add your own.<span class="hidden-text"> Opens in new tab </span></a><br><span class="notification-date">8 days ago</span></div><div class="drop-down unclicked" id="1439139"><span class="notification-title">New feedback from Israel: </span>Your mentor just posted some notes about your last session together.  <a href="https://online.bootcampspot.com/students/mentor_sessions/12669/student_sessions/new" id="1439139-link" target="_blank">Click here to read the notes and add your own.<span class="hidden-text"> Opens in new tab </span></a><br><span class="notification-date">10 days ago</span></div><div class="drop-down unclicked" id="1439138"><span class="notification-title">New feedback from Israel: </span>Your mentor just posted some notes about your last session together.  <a href="https://online.bootcampspot.com/students/mentor_sessions/12668/student_sessions/new" id="1439138-link" target="_blank">Click here to read the notes and add your own.<span class="hidden-text"> Opens in new tab </span></a><br><span class="notification-date">10 days ago</span></div><div class="drop-down unclicked" id="1439025"><span class="notification-title">New Video Sessions Unlocked: </span><a href="https://online.bootcampspot.com/advanced-git-topics/1" id="1439025-link" target="_blank">Advanced Git and GitHub<span class="hidden-text"> Opens in new tab </span></a><br><span class="notification-date">11 days ago</span></div><div class="drop-down unclicked" id="1438838"><span class="notification-title">New Quiz Unlocked: </span><a href="https://online.bootcampspot.com/quizzes/3" id="1438838-link" target="_blank">Object Oriented Programming<span class="hidden-text"> Opens in new tab </span></a><br><span class="notification-date">13 days ago</span></div><div class="drop-down unclicked" id="1437851"><span class="notification-title">New Quiz Unlocked: </span><a href="https://online.bootcampspot.com/quizzes/2" id="1437851-link" target="_blank">Setting up a Database<span class="hidden-text"> Opens in new tab </span></a><br><span class="notification-date">24 days ago</span></div><div class="drop-down unclicked" id="1437387"><span class="notification-title">New feedback from Israel: </span>Your mentor just posted some notes about your last session together.  <a href="https://online.bootcampspot.com/students/mentor_sessions/11985/student_sessions/new" id="1437387-link" target="_blank">Click here to read the notes and add your own.<span class="hidden-text"> Opens in new tab </span></a><br><span class="notification-date">29 days ago</span></div><div class="drop-down" id="1436965"><img src="./Foundations_ Lesson 7_linkedlist_files/exclamation-b12df24a05d67531e26e46759bdad1916922d6e9afb525eeceaa8cfc0683c67f.png" class="important-notification"><span class="notification-title">Upcoming Maintenance:  </span>From 4am EST to 8am EST on Sunday July 7, the site will be down for scheduled maintenance. <a href="https://online.bootcampspot.com/foundations/id" =="" 1436965-link="" target="_blank"><span class="hidden-text"> Opens in new tab </span></a><br><span class="notification-date">about a month ago</span></div><div class="drop-down" id="1435470"><span class="notification-title">New feedback from Israel: </span>Your mentor just posted some notes about your last session together.  <a href="https://online.bootcampspot.com/students/mentor_sessions/11742/student_sessions/new" id="1435470-link" target="_blank">Click here to read the notes and add your own.<span class="hidden-text"> Opens in new tab </span></a><br><span class="notification-date">about a month ago</span></div><div class="drop-down unclicked" id="1435288"><span class="notification-title">New Algorithm Unlocked: </span><a href="https://online.bootcampspot.com/foundations/7" id="1435288-link" target="_blank">Linked List #1<span class="hidden-text"> Opens in new tab </span></a><br><span class="notification-date">about a month ago</span></div><div class="drop-down unclicked" id="1435117"><span class="notification-title">New feedback from Israel: </span>Your mentor just posted some notes about your last session together.  <a href="https://online.bootcampspot.com/students/mentor_sessions/11576/student_sessions/new" id="1435117-link" target="_blank">Click here to read the notes and add your own.<span class="hidden-text"> Opens in new tab </span></a><br><span class="notification-date">about a month ago</span></div><div class="drop-down unclicked" id="1434645"><span class="notification-title">New Algorithm Unlocked: </span><a href="https://online.bootcampspot.com/foundations/5" id="1434645-link" target="_blank">Image Blur #2<span class="hidden-text"> Opens in new tab </span></a><br><span class="notification-date">2 months ago</span></div><div class="drop-down unclicked" id="1434584"><span class="notification-title">New Algorithm Unlocked: </span><a href="https://online.bootcampspot.com/foundations/4" id="1434584-link" target="_blank">Image Blur #1<span class="hidden-text"> Opens in new tab </span></a><br><span class="notification-date">2 months ago</span></div><div class="drop-down unclicked" id="1434419"><span class="notification-title">New feedback from Israel: </span>Your mentor just posted some notes about your last session together.  <a href="https://online.bootcampspot.com/students/mentor_sessions/11329/student_sessions/new" id="1434419-link" target="_blank">Click here to read the notes and add your own.<span class="hidden-text"> Opens in new tab </span></a><br><span class="notification-date">2 months ago</span></div><div class="drop-down unclicked" id="1434337"><span class="notification-title">New Algorithm Unlocked: </span><a href="https://online.bootcampspot.com/foundations/3" id="1434337-link" target="_blank">How to Approach Algorithm Problems<span class="hidden-text"> Opens in new tab </span></a><br><span class="notification-date">2 months ago</span></div><div class="drop-down unclicked" id="1434335"><span class="notification-title">New Video Sessions Unlocked: </span><a href="https://online.bootcampspot.com/oop/1" id="1434335-link" target="_blank">Object Oriented Programming - How to organize code in classes<span class="hidden-text"> Opens in new tab </span></a><br><span class="notification-date">2 months ago</span></div><div class="drop-down unclicked" id="1434334"><span class="notification-title">New Quiz Unlocked: </span><a href="https://online.bootcampspot.com/quizzes/1" id="1434334-link" target="_blank">Web Development Pipeline<span class="hidden-text"> Opens in new tab </span></a><br><span class="notification-date">2 months ago</span></div><div class="drop-down unclicked" id="1434263"><span class="notification-title">New Assignment Unlocked: </span><a href="https://online.bootcampspot.com/foundations/1" id="1434263-link" target="_blank">Why Blogging About Code is Important<span class="hidden-text"> Opens in new tab </span></a><br><span class="notification-date">2 months ago</span></div><div class="drop-down" id="1434071"><span class="notification-title">Update your Profile: </span><a href="https://online.bootcampspot.com/users/edit" id="1434071-link" target="_blank">Upload your favorite headshot, link your Twitter and Github accounts, and more.<span class="hidden-text"> Opens in new tab </span></a><br><span class="notification-date">2 months ago</span></div><div class="drop-down unclicked" id="1434004"><span class="notification-title">New feedback from Israel: </span>Your mentor just posted some notes about your last session together.  <a href="https://online.bootcampspot.com/students/mentor_sessions/11167/student_sessions/new" id="1434004-link" target="_blank">Click here to read the notes and add your own.<span class="hidden-text"> Opens in new tab </span></a><br><span class="notification-date">2 months ago</span></div><div class="drop-down unclicked" id="1433746"><span class="notification-title">Get support:  </span>Any questions you have about your experience in the program, answered.  <a href="https://online.bootcampspot.com/student-support" id="1433746-link" target="_blank">Check out and bookmark the Student Support Page.<span class="hidden-text"> Opens in new tab </span></a><br><span class="notification-date">2 months ago</span></div><div class="drop-down unclicked" id="1433677"><span class="notification-title">Mentorship in the program:  </span>Working 1-on-1 with your senior developer mentor is core to your learning.  <a href="https://online.bootcampspot.com/student-support/mentorships/what-are-mentor-sessions" id="1433677-link" target="_blank">Learn more about mentor sessions and how to make the most of working with your mentor.<span class="hidden-text"> Opens in new tab </span></a><br><span class="notification-date">2 months ago</span></div></div>
+        </div>
+        <a id="topnav-user-name" role="button" href="javascript:void(0);" aria-expanded="false">
+          <img id="topnav-user-avatar" alt="User Avatar" src="./Foundations_ Lesson 7_linkedlist_files/avatar-1d1f2ed38f04215f5b7b57e3145be0efd34fbbcf3bdbfed8871041db7e74e67f.png" aria-expanded="false">
+          <img id="topnav-user-caret" src="./Foundations_ Lesson 7_linkedlist_files/arrow_dropdown_down-afabafa6262f2b7b277c24d88505de58c51117ffcba52f1e717a94fb89ec24d6.png" alt="" aria-expanded="false">
+</a>
+      </div>
+      <div id="user-profile-dropdown" style="display:none;">
+        <a class="drop-down -link -bold" href="https://online.bootcampspot.com/users/edit">Edit Profile</a>
+          <a class="drop-down -link -bold" href="https://online.bootcampspot.com/student-dashboard">Mentor Session Feedback</a>
+        <a class="drop-down -link" rel="nofollow" data-method="delete" href="https://online.bootcampspot.com/users/sign_out">Sign Out</a>
+
+          <hr>
+          <div class="drop-down"><b>Start Date:</b> May 20, 2019</div>
+          <div class="drop-down"><b>End Date:</b> November 04, 2019</div>
+          <div class="drop-down"><b>Remaining Mentor Sessions:</b> 15</div>
+
+
+        <!-- Privacy Policy and Terms -->
+        <hr>
+        <a href="https://online.bootcampspot.com/terms" class="drop-down -link" ,="" target="_blank" rel="noreferrer noopener">Terms of Service<span class="hidden-text">Link opens in new tab</span></a>
+        <a href="https://online.bootcampspot.com/privacy-policy" class="drop-down -link" ,="" target="_blank" rel="noreferrer noopener">Privacy Policy<span class="hidden-text">Link opens in new tab</span></a>
+      </div>
+  </div>
+</div>
+
+
+
+  <script src="./Foundations_ Lesson 7_linkedlist_files/temporary_course_side_navigation-bbb4ec2ce8d177fbd4ac7d7a8371cb97e6c9f26732bebb466aaf5b6566b5a9f8.js.download"></script>
+  <div id="side-nav-holder">
+    <link rel="stylesheet" media="screen" href="./Foundations_ Lesson 7_linkedlist_files/lesson_sidenav-c3b03a7de676c831213239514516bcfc50bf87b57afddf6a8e9a7b391220d8af.css">
+<script src="./Foundations_ Lesson 7_linkedlist_files/dashboard_sidenav-70757968923f7ba8309bae1165f021a67f090916fead982d244d2e96b61c06ea.js.download"></script>
+<script src="./Foundations_ Lesson 7_linkedlist_files/temporary_course_side_navigation-bbb4ec2ce8d177fbd4ac7d7a8371cb97e6c9f26732bebb466aaf5b6566b5a9f8.js.download"></script>
+
+
+  <div id="nav-out-temp" data-toggle="streak-tooltips" rel="tooltip" title="This is placeholder.">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </div>
+  <div id="side-nav-container" role="navigation">
+
+    <!-- VIDEOS FOR SPA -->
+    <!-- END VIDEOS FOR SPA -->
+
+    <!-- CHAPTERS -->
+      <div class="section-accordion" id="chapters-accordion">
+  <div class="accordion-section-title __secondary_link">
+    <a data-toggle="collapse" data-parent="#chapters-accordion" role="button" href="https://online.bootcampspot.com/foundations/7#chapters-collapse" class="outer-section-collapse">
+      <div class="title-container">
+        <div class="icon-img"><img src="./Foundations_ Lesson 7_linkedlist_files/icon_chapters-4a96036f58a26e16b9a39b91ba89677bcab0a8e08ea2ff3494b5274ad0b0c068.svg" alt=""></div>
+        <span class="icon-text">Web App: Flixter</span>
+      </div>
+        <span class="icon-number">
+          1
+        </span>
+    </a>
+  </div>
+
+  <div id="chapters-collapse" class="panel-collapse collapse">
+
+      <!-- For intro course - this hides the last chapter and lesson 1-->
+        <div id="chapter-inner-acc0" class="accordion-inner-class">
+          <a data-toggle="collapse" data-parent="#chapter-inner-acc0" role="button" data-target="#chapter-collapse0" class="__primary_link" href="javascript:void(0);" aria-expanded="false">
+            <div class="outside-links ">
+              <span class="lesson-name-span __secondary_link">
+                1. Getting Started
+              </span>
+              <span class="caret-class">
+                <img src="./Foundations_ Lesson 7_linkedlist_files/caret_down-576a5f30dfc208e2dc97787e864092a14fc233b0a26c924a99e8eb0e952d08ce.svg" alt="">
+              </span>
+            </div>
+          </a>
+          <div id="chapter-collapse0" class="panel-collapse collapse -inner">
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/1">- 1: Setting Up the Project<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/2">- 2: Setting Up the Pipeline<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/3">- 3: Wireframing<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+          </div>
+        </div>
+
+      <!-- For intro course - this hides the last chapter and lesson 1-->
+        <div id="chapter-inner-acc1" class="accordion-inner-class">
+          <a data-toggle="collapse" data-parent="#chapter-inner-acc1" role="button" data-target="#chapter-collapse1" class="__primary_link" href="javascript:void(0);" aria-expanded="false">
+            <div class="outside-links ">
+              <span class="lesson-name-span __secondary_link">
+                2. Common App Features
+              </span>
+              <span class="caret-class">
+                <img src="./Foundations_ Lesson 7_linkedlist_files/caret_down-576a5f30dfc208e2dc97787e864092a14fc233b0a26c924a99e8eb0e952d08ce.svg" alt="">
+              </span>
+            </div>
+          </a>
+          <div id="chapter-collapse1" class="panel-collapse collapse -inner">
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/4">- 4: Landing page<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/5">- 5: Bootstrap<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/6">- 6: Top-Nav<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/7">- 7: Styling the Top-Nav<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/8">- 8: Hero Section<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/9">- 9: Finish the Landing Page<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/10">- 10: Adding Simple Form<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/11">- 11: Devise<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+          </div>
+        </div>
+
+      <!-- For intro course - this hides the last chapter and lesson 1-->
+        <div id="chapter-inner-acc2" class="accordion-inner-class">
+          <a data-toggle="collapse" data-parent="#chapter-inner-acc2" role="button" data-target="#chapter-collapse2" class="__primary_link" href="javascript:void(0);" aria-expanded="false">
+            <div class="outside-links ">
+              <span class="lesson-name-span __secondary_link">
+                3. CRUD for our Application
+              </span>
+              <span class="caret-class">
+                <img src="./Foundations_ Lesson 7_linkedlist_files/caret_down-576a5f30dfc208e2dc97787e864092a14fc233b0a26c924a99e8eb0e952d08ce.svg" alt="">
+              </span>
+            </div>
+          </a>
+          <div id="chapter-collapse2" class="panel-collapse collapse -inner">
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/12">- 12: Adding a Sticky Footer<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/13">- 13: Allow course creation<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/14">- 14: Course Validation<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/15">- 15: Listing the courses<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/16">- 16: Student Course Page<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/17">- 17: Sections<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/18">- 18: Lessons<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/19">- 19: Lesson Permissions<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/20">- 20: Finalizing Permissions<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/21">- 21: Course Detail &amp; Lesson<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+          </div>
+        </div>
+
+      <!-- For intro course - this hides the last chapter and lesson 1-->
+        <div id="chapter-inner-acc3" class="accordion-inner-class">
+          <a data-toggle="collapse" data-parent="#chapter-inner-acc3" role="button" data-target="#chapter-collapse3" class="__primary_link" href="javascript:void(0);" aria-expanded="false">
+            <div class="outside-links ">
+              <span class="lesson-name-span __secondary_link">
+                4. Image &amp; Video Uploading
+              </span>
+              <span class="caret-class">
+                <img src="./Foundations_ Lesson 7_linkedlist_files/caret_down-576a5f30dfc208e2dc97787e864092a14fc233b0a26c924a99e8eb0e952d08ce.svg" alt="">
+              </span>
+            </div>
+          </a>
+          <div id="chapter-collapse3" class="panel-collapse collapse -inner">
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/22">- 22: Carrierwave<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/23">- 23: Change the Resolution<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/24">- 24: Video Uploading<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/25">- 25: Video Embedding<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+          </div>
+        </div>
+
+      <!-- For intro course - this hides the last chapter and lesson 1-->
+        <div id="chapter-inner-acc4" class="accordion-inner-class">
+          <a data-toggle="collapse" data-parent="#chapter-inner-acc4" role="button" data-target="#chapter-collapse4" class="__primary_link" href="javascript:void(0);" aria-expanded="false">
+            <div class="outside-links ">
+              <span class="lesson-name-span __secondary_link">
+                5. Enrollment &amp; Payments
+              </span>
+              <span class="caret-class">
+                <img src="./Foundations_ Lesson 7_linkedlist_files/caret_down-576a5f30dfc208e2dc97787e864092a14fc233b0a26c924a99e8eb0e952d08ce.svg" alt="">
+              </span>
+            </div>
+          </a>
+          <div id="chapter-collapse4" class="panel-collapse collapse -inner">
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/26">- 26: Style the Course Page<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/27">- 27: Student Enrollment<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/28">- 28: Permissions<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/29">- 29: Payments with Stripe<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+          </div>
+        </div>
+
+      <!-- For intro course - this hides the last chapter and lesson 1-->
+        <div id="chapter-inner-acc5" class="accordion-inner-class">
+          <a data-toggle="collapse" data-parent="#chapter-inner-acc5" role="button" data-target="#chapter-collapse5" class="__primary_link" href="javascript:void(0);" aria-expanded="false">
+            <div class="outside-links ">
+              <span class="lesson-name-span __secondary_link">
+                6. Instructor Course Page
+              </span>
+              <span class="caret-class">
+                <img src="./Foundations_ Lesson 7_linkedlist_files/caret_down-576a5f30dfc208e2dc97787e864092a14fc233b0a26c924a99e8eb0e952d08ce.svg" alt="">
+              </span>
+            </div>
+          </a>
+          <div id="chapter-collapse5" class="panel-collapse collapse -inner">
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/30">- 30: Ordering Lessons<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/31">- 31: Lesson Drag &amp; Drop<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/32">- 32: Sections<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/33">- 33: Style the instructor page<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+          </div>
+        </div>
+
+      <!-- For intro course - this hides the last chapter and lesson 1-->
+        <div id="chapter-inner-acc6" class="accordion-inner-class">
+          <a data-toggle="collapse" data-parent="#chapter-inner-acc6" role="button" data-target="#chapter-collapse6" class="__primary_link" href="javascript:void(0);" aria-expanded="false">
+            <div class="outside-links ">
+              <span class="lesson-name-span __secondary_link">
+                7. Finishing Touches
+              </span>
+              <span class="caret-class">
+                <img src="./Foundations_ Lesson 7_linkedlist_files/caret_down-576a5f30dfc208e2dc97787e864092a14fc233b0a26c924a99e8eb0e952d08ce.svg" alt="">
+              </span>
+            </div>
+          </a>
+          <div id="chapter-collapse6" class="panel-collapse collapse -inner">
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/34">- 34: Instructor dashboard<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/35">- 35: New section form modal<span class="offscreen">checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/36">- 36: New lesson form modal<span class="offscreen">not checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="incomplete goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkbox-db5d7b5c16cb46b85030e9fc72d5a0423adad33c4233bcfddb9bfef0f43a4519.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/37">- 37: Next Lesson Button<span class="offscreen">not checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="incomplete goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkbox-db5d7b5c16cb46b85030e9fc72d5a0423adad33c4233bcfddb9bfef0f43a4519.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/38">- 38: Finishing the Footer<span class="offscreen">not checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="incomplete goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkbox-db5d7b5c16cb46b85030e9fc72d5a0423adad33c4233bcfddb9bfef0f43a4519.svg">
+                  </span>
+              </div>
+              <div class="inside-links">
+                <a href="https://online.bootcampspot.com/flixter/39">- 39: Adding a Static Page<span class="offscreen">not checked</span></a>
+                  <span class="lesson-check-box">
+                      <img alt="incomplete goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkbox-db5d7b5c16cb46b85030e9fc72d5a0423adad33c4233bcfddb9bfef0f43a4519.svg">
+                  </span>
+              </div>
+          </div>
+        </div>
+  </div>
+
+</div>
+
+    <!-- END CHAPTERS -->
+
+    <!-- JOB PREP (ITS UNIQUE) -->
+
+    <!-- CHALLENGES -->
+      <div class="section-accordion" id="challenges-accordion">
+  <div class="accordion-section-title __secondary_link">
+    <a data-toggle="collapse" data-parent="#challenges-accordion" role="button" href="https://online.bootcampspot.com/foundations/7#challenges-collapse">
+      <div class="title-container">
+        <div class="icon-img"><img src="./Foundations_ Lesson 7_linkedlist_files/icon_coding_challenge-f26a1ad946a6c64548e090df45bdeb853b01c11a0593acc4fae65895903eb74d.png" alt=""></div>
+          <span class="icon-text">Challenges</span>
+      </div>
+        <span class="icon-number">
+          1
+        </span>
+    </a>
+  </div>
+
+  <div id="challenges-collapse" class="panel-collapse collapse in" style="height: auto;">
+      <div id="challenges-inner-acc0" class="inside-links -active">
+        <span class="lesson-name-span" id="foundations1">
+          <a href="https://online.bootcampspot.com/foundations/7" class="-active">Linked List #1</a>
+        </span>
+        <span class="lesson-check-box">
+            <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+        </span>
+      </div>
+      <div id="challenges-inner-acc1" class="inside-links">
+        <span class="lesson-name-span" id="foundations2">
+          <a href="https://online.bootcampspot.com/foundations/8">Linked List #2</a>
+        </span>
+        <span class="lesson-check-box">
+            <img alt="incomplete goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkbox-db5d7b5c16cb46b85030e9fc72d5a0423adad33c4233bcfddb9bfef0f43a4519.svg">
+        </span>
+      </div>
+  </div>
+
+</div>
+
+    <!-- END CHALLENGES -->
+
+    <!-- ADV CHALLENGES -->
+    <!-- END ADV CHALLENGES -->
+
+    <!-- VIDEOS -->
+      <div class="section-accordion" id="videos-accordion">
+  <div class="accordion-section-title __secondary_link">
+    <a data-toggle="collapse" data-parent="#videos-accordion" role="button" href="https://online.bootcampspot.com/foundations/7#videos-collapse" class="outer-section-collapse2">
+      <div class="title-container">
+          <div class="icon-img"><img src="./Foundations_ Lesson 7_linkedlist_files/icon_videos-21874a51a1f5f4f53af7ed738c02c542f7fa67f4ed9d9f7c66461a904e898400.png" alt=""></div>
+          <span class="icon-text">Videos</span>
+      </div>
+        <span class="icon-number">
+          1
+        </span>
+    </a>
+  </div>
+
+  <div id="videos-collapse" class="panel-collapse collapse">
+    <div id="videos-inner-acc0" class="accordion-inner-class">
+        <a data-toggle="collapse" data-parent="#videos-inner-acc0" role="button" href="https://online.bootcampspot.com/foundations/7#videos-collapse0">
+          <div class="outside-links ">
+            <span class="lesson-name-span __secondary_link">
+              1. Advanced Git Topics
+            </span>
+            <span class="caret-class">
+              <img src="./Foundations_ Lesson 7_linkedlist_files/caret_down-576a5f30dfc208e2dc97787e864092a14fc233b0a26c924a99e8eb0e952d08ce.svg" alt="">
+            </span>
+          </div>
+        </a>
+        <div id="videos-collapse0" class="panel-collapse collapse -inner">
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/advanced-git-topics/1">1. Overview</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="incomplete goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkbox-db5d7b5c16cb46b85030e9fc72d5a0423adad33c4233bcfddb9bfef0f43a4519.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/advanced-git-topics/2">2. git stash</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="incomplete goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkbox-db5d7b5c16cb46b85030e9fc72d5a0423adad33c4233bcfddb9bfef0f43a4519.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/advanced-git-topics/3">3. Branch and Merge</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="incomplete goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkbox-db5d7b5c16cb46b85030e9fc72d5a0423adad33c4233bcfddb9bfef0f43a4519.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/advanced-git-topics/4">4. Pull Requests</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="incomplete goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkbox-db5d7b5c16cb46b85030e9fc72d5a0423adad33c4233bcfddb9bfef0f43a4519.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/advanced-git-topics/5">5. Merge Conflicts</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="incomplete goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkbox-db5d7b5c16cb46b85030e9fc72d5a0423adad33c4233bcfddb9bfef0f43a4519.svg">
+              </span>
+            </div>
+        </div>
+    </div>
+
+    <div id="videos-inner-acc1" class="accordion-inner-class">
+        <a data-toggle="collapse" data-parent="#videos-inner-acc1" role="button" href="https://online.bootcampspot.com/foundations/7#videos-collapse1">
+          <div class="outside-links ">
+            <span class="lesson-name-span __secondary_link">
+              2. Inheritance
+            </span>
+            <span class="caret-class">
+              <img src="./Foundations_ Lesson 7_linkedlist_files/caret_down-576a5f30dfc208e2dc97787e864092a14fc233b0a26c924a99e8eb0e952d08ce.svg" alt="">
+            </span>
+          </div>
+        </a>
+        <div id="videos-collapse1" class="panel-collapse collapse -inner">
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/inheritance/1">1. Overview</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/inheritance/2">2. Building an Animal</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/inheritance/3">3. Building a Dog</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/inheritance/4">4. Cats and Ducks</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/inheritance/5">5. Retrievers and Poodles</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/inheritance/6">6. is_a?</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/inheritance/7">7. Inheritance in Practice</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+        </div>
+    </div>
+
+    <div id="videos-inner-acc2" class="accordion-inner-class">
+        <a data-toggle="collapse" data-parent="#videos-inner-acc2" role="button" href="https://online.bootcampspot.com/foundations/7#videos-collapse2">
+          <div class="outside-links ">
+            <span class="lesson-name-span __secondary_link">
+              3. Javascript
+            </span>
+            <span class="caret-class">
+              <img src="./Foundations_ Lesson 7_linkedlist_files/caret_down-576a5f30dfc208e2dc97787e864092a14fc233b0a26c924a99e8eb0e952d08ce.svg" alt="">
+            </span>
+          </div>
+        </a>
+        <div id="videos-collapse2" class="panel-collapse collapse -inner">
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/javascript-overview/1">1. Overview</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/javascript-overview/2">2. Methods in Ruby</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/javascript-overview/3">3. Lambda in Ruby</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/javascript-overview/4">4. Lambda as a Variable</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/javascript-overview/5">5. Practical Lambda Uses</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/javascript-overview/6">6. Intro to JavaScript</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/javascript-overview/7">7. jQuery &amp; document.ready</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/javascript-overview/8">8. DOM Traversal</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/javascript-overview/9">9. Anonymous Functions</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/javascript-overview/10">10. Event Handlers</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/javascript-overview/11">11. Refactoring our Code</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/javascript-overview/12">12. Scope</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/javascript-overview/13">13. Data types in Ruby</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/javascript-overview/14">14. JSON</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/javascript-overview/15">15. JSON in Ruby</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/javascript-overview/16">16. AJAX</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/javascript-overview/17">17. AJAX Get Requests</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/javascript-overview/18">18. AJAX Post Requests</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/javascript-overview/19">19. Extract Input's Value</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/javascript-overview/20">20. AJAX Posts</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/javascript-overview/21">21. jQuery Plugins</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+            <div class="inside-links">
+              <span class="lesson-name-span">
+                <a href="https://online.bootcampspot.com/javascript-overview/22">22. Closing Thoughts</a>
+              </span>
+              <span class="lesson-check-box">
+                  <img alt="completed goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkmark-178cb9da56e640fda81da66ca82ee75578f884f896573fcda17bebfad3972a2e.svg">
+              </span>
+            </div>
+        </div>
+    </div>
+
+  </div>
+
+</div>
+
+    <!-- END VIDEOS -->
+
+    <!-- QUIZZES -->
+      <div class="section-accordion" id="quizzes-accordion">
+  <div class="accordion-section-title">
+    <a data-toggle="collapse" data-parent="#quizzes-accordion" role="button" href="https://online.bootcampspot.com/foundations/7#quizzes-collapse">
+      <div class="title-container">
+        <div class="icon-img"><img src="./Foundations_ Lesson 7_linkedlist_files/icon_quiz-988088d89151fe3faa227679a9725d4d280406dd12c7fb93638814aeff3a139e.png" alt=""></div>
+        <span class="icon-text">Quizzes</span>
+      </div>
+        <span class="icon-number">
+          2
+        </span>
+    </a>
+  </div>
+
+  <div id="quizzes-collapse" class="panel-collapse collapse">
+      <div id="quizzes-inner-acc0" class="inside-links">
+        <span class="lesson-name-span"><a href="https://online.bootcampspot.com/quizzes/2">Quiz #2</a></span>
+        <span class="lesson-check-box">
+            <img alt="incomplete goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkbox-db5d7b5c16cb46b85030e9fc72d5a0423adad33c4233bcfddb9bfef0f43a4519.svg">
+        </span>
+      </div>
+      <div id="quizzes-inner-acc1" class="inside-links">
+        <span class="lesson-name-span"><a href="https://online.bootcampspot.com/quizzes/3">Quiz #3</a></span>
+        <span class="lesson-check-box">
+            <img alt="incomplete goal checkbox" src="./Foundations_ Lesson 7_linkedlist_files/icon_checkbox-db5d7b5c16cb46b85030e9fc72d5a0423adad33c4233bcfddb9bfef0f43a4519.svg">
+        </span>
+      </div>
+  </div>
+</div>
+
+    <!-- END QUIZZES -->
+
+    <!-- INDUSTRY KNOWLEDGE SECTION -->
+
+    <!-- END INDUSTRY KNOWLEDGE SECTION -->
+
+  </div>
+
+</div><!-- End Sidenav container -->
+
+<script>
+  sidenav_engine("/foundations/7");
+</script>
+
+  
+
+
+
+<script>
+  var title = document.title;
+</script>
+
+  <script>
+    $(function(){
+      setSiteTitle("0");
+      loadNotificationsToBell([{"id":1433677,"title":"Mentorship in the program: ","description":"Learn more about mentor sessions and how to make the most of working with your mentor.","user_id":30831,"created_at":"2019-05-26T09:05:11.143-04:00","updated_at":"2019-05-26T09:05:11.143-04:00","path":"https://online.bootcampspot.com/student-support/mentorships/what-are-mentor-sessions","notification_type":"temp","plain_text":"Working 1-on-1 with your senior developer mentor is core to your learning. ","location":"Bell","clicked?":false},{"id":1433746,"title":"Get support: ","description":"Check out and bookmark the Student Support Page.","user_id":30831,"created_at":"2019-05-27T09:05:10.851-04:00","updated_at":"2019-05-27T09:05:10.851-04:00","path":"https://online.bootcampspot.com/student-support","notification_type":"temp","plain_text":"Any questions you have about your experience in the program, answered. ","location":"Bell","clicked?":false},{"id":1434004,"title":"New feedback from Israel:","description":"Click here to read the notes and add your own.","user_id":30831,"created_at":"2019-05-31T22:18:09.678-04:00","updated_at":"2019-05-31T22:18:09.678-04:00","path":"https://online.bootcampspot.com/students/mentor_sessions/11167/student_sessions/new","notification_type":"temp","plain_text":"Your mentor just posted some notes about your last session together. ","location":"Bell","clicked?":false},{"id":1434071,"title":"Update your Profile:","description":"Upload your favorite headshot, link your Twitter and Github accounts, and more.","user_id":30831,"created_at":"2019-06-02T10:45:15.524-04:00","updated_at":"2019-06-02T22:43:22.480-04:00","path":"https://online.bootcampspot.com/users/edit","notification_type":"temp","plain_text":null,"location":"Bell","clicked?":true},{"id":1434263,"title":"New Assignment Unlocked:","description":"Why Blogging About Code is Important","user_id":30831,"created_at":"2019-06-05T12:30:52.036-04:00","updated_at":"2019-06-05T12:30:52.036-04:00","path":"https://online.bootcampspot.com/foundations/1","notification_type":"temp","plain_text":null,"location":"Bell","clicked?":false},{"id":1434334,"title":"New Quiz Unlocked:","description":"Web Development Pipeline","user_id":30831,"created_at":"2019-06-06T19:16:39.319-04:00","updated_at":"2019-06-06T19:16:39.319-04:00","path":"https://online.bootcampspot.com/quizzes/1","notification_type":"temp","plain_text":null,"location":"Bell","clicked?":false},{"id":1434335,"title":"New Video Sessions Unlocked:","description":"Object Oriented Programming - How to organize code in classes","user_id":30831,"created_at":"2019-06-06T19:18:53.088-04:00","updated_at":"2019-06-06T19:18:53.088-04:00","path":"https://online.bootcampspot.com/oop/1","notification_type":"temp","plain_text":null,"location":"Bell","clicked?":false},{"id":1434337,"title":"New Algorithm Unlocked:","description":"How to Approach Algorithm Problems","user_id":30831,"created_at":"2019-06-06T19:26:42.848-04:00","updated_at":"2019-06-06T19:26:42.848-04:00","path":"https://online.bootcampspot.com/foundations/3","notification_type":"temp","plain_text":null,"location":"Bell","clicked?":false},{"id":1434419,"title":"New feedback from Israel:","description":"Click here to read the notes and add your own.","user_id":30831,"created_at":"2019-06-07T22:03:31.898-04:00","updated_at":"2019-06-07T22:03:31.898-04:00","path":"https://online.bootcampspot.com/students/mentor_sessions/11329/student_sessions/new","notification_type":"temp","plain_text":"Your mentor just posted some notes about your last session together. ","location":"Bell","clicked?":false},{"id":1434584,"title":"New Algorithm Unlocked:","description":"Image Blur #1","user_id":30831,"created_at":"2019-06-10T02:01:30.818-04:00","updated_at":"2019-06-10T02:01:30.818-04:00","path":"https://online.bootcampspot.com/foundations/4","notification_type":"temp","plain_text":null,"location":"Bell","clicked?":false},{"id":1434645,"title":"New Algorithm Unlocked:","description":"Image Blur #2","user_id":30831,"created_at":"2019-06-10T12:36:21.310-04:00","updated_at":"2019-06-10T12:36:21.310-04:00","path":"https://online.bootcampspot.com/foundations/5","notification_type":"temp","plain_text":null,"location":"Bell","clicked?":false},{"id":1435117,"title":"New feedback from Israel:","description":"Click here to read the notes and add your own.","user_id":30831,"created_at":"2019-06-17T10:46:49.421-04:00","updated_at":"2019-06-17T10:46:49.421-04:00","path":"https://online.bootcampspot.com/students/mentor_sessions/11576/student_sessions/new","notification_type":"temp","plain_text":"Your mentor just posted some notes about your last session together. ","location":"Bell","clicked?":false},{"id":1435288,"title":"New Algorithm Unlocked:","description":"Linked List #1","user_id":30831,"created_at":"2019-06-19T17:52:47.413-04:00","updated_at":"2019-06-19T17:52:47.413-04:00","path":"https://online.bootcampspot.com/foundations/7","notification_type":"temp","plain_text":null,"location":"Bell","clicked?":false},{"id":1435470,"title":"New feedback from Israel:","description":"Click here to read the notes and add your own.","user_id":30831,"created_at":"2019-06-22T11:51:14.416-04:00","updated_at":"2019-06-23T16:30:09.006-04:00","path":"https://online.bootcampspot.com/students/mentor_sessions/11742/student_sessions/new","notification_type":"temp","plain_text":"Your mentor just posted some notes about your last session together. ","location":"Bell","clicked?":true},{"id":1436965,"title":"Upcoming Maintenance: ","description":"","user_id":30831,"created_at":"2019-06-27T10:44:59.931-04:00","updated_at":"2019-07-08T09:58:44.166-04:00","path":"","notification_type":"permanent","plain_text":"From 4am EST to 8am EST on Sunday July 7, the site will be down for scheduled maintenance.","location":"Both","clicked?":true},{"id":1437387,"title":"New feedback from Israel:","description":"Click here to read the notes and add your own.","user_id":30831,"created_at":"2019-06-30T04:37:42.555-04:00","updated_at":"2019-06-30T04:37:42.555-04:00","path":"https://online.bootcampspot.com/students/mentor_sessions/11985/student_sessions/new","notification_type":"temp","plain_text":"Your mentor just posted some notes about your last session together. ","location":"Bell","clicked?":false},{"id":1437851,"title":"New Quiz Unlocked:","description":"Setting up a Database","user_id":30831,"created_at":"2019-07-05T12:18:48.819-04:00","updated_at":"2019-07-05T12:18:48.819-04:00","path":"https://online.bootcampspot.com/quizzes/2","notification_type":"temp","plain_text":null,"location":"Bell","clicked?":false},{"id":1438838,"title":"New Quiz Unlocked:","description":"Object Oriented Programming","user_id":30831,"created_at":"2019-07-16T15:10:27.239-04:00","updated_at":"2019-07-16T15:10:27.239-04:00","path":"https://online.bootcampspot.com/quizzes/3","notification_type":"temp","plain_text":null,"location":"Bell","clicked?":false},{"id":1439025,"title":"New Video Sessions Unlocked:","description":"Advanced Git and GitHub","user_id":30831,"created_at":"2019-07-18T10:48:50.315-04:00","updated_at":"2019-07-18T10:48:50.315-04:00","path":"https://online.bootcampspot.com/advanced-git-topics/1","notification_type":"temp","plain_text":null,"location":"Bell","clicked?":false},{"id":1439138,"title":"New feedback from Israel:","description":"Click here to read the notes and add your own.","user_id":30831,"created_at":"2019-07-19T05:32:06.390-04:00","updated_at":"2019-07-19T05:32:06.390-04:00","path":"https://online.bootcampspot.com/students/mentor_sessions/12668/student_sessions/new","notification_type":"temp","plain_text":"Your mentor just posted some notes about your last session together. ","location":"Bell","clicked?":false},{"id":1439139,"title":"New feedback from Israel:","description":"Click here to read the notes and add your own.","user_id":30831,"created_at":"2019-07-19T05:32:21.425-04:00","updated_at":"2019-07-19T05:32:21.425-04:00","path":"https://online.bootcampspot.com/students/mentor_sessions/12669/student_sessions/new","notification_type":"temp","plain_text":"Your mentor just posted some notes about your last session together. ","location":"Bell","clicked?":false},{"id":1439311,"title":"New feedback from Israel:","description":"Click here to read the notes and add your own.","user_id":30831,"created_at":"2019-07-21T16:13:36.626-04:00","updated_at":"2019-07-24T11:56:14.942-04:00","path":"https://online.bootcampspot.com/students/mentor_sessions/12725/student_sessions/new","notification_type":"temp","plain_text":"Your mentor just posted some notes about your last session together. ","location":"Bell","clicked?":true}]);
+      firebaseNotificationSubscription('/notifications', '0');
+    });
+  </script>
+
+
+
+
+
+
+      <!--  Google Analytics Tracking Pixel -->
+      <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-49340848-1', 'thefirehoseproject.com');
+  
+  if (document.cookie.includes('user_is_admin')) {
+    var dimensionValue = 'true';
+    ga('set', 'dimension1', dimensionValue);
+  }
+
+  ga('send', 'pageview');
+
+</script>
+
+
+
+    <div class="content" role="main">
+
+      <link rel="stylesheet" media="screen" href="./Foundations_ Lesson 7_linkedlist_files/foundations-8ebc64e138e5d0e78858b0434f1ae137c16bd8fb624080449fa0477b611c9905.css">
+<div class="track-lesson-container">
+  <link rel="stylesheet" media="screen" href="./Foundations_ Lesson 7_linkedlist_files/lesson_improvement-207d36fac766e1f85803a90af5d0dce9dae03d9f7e35c01ce41d906d04b7a089.css">
+<script src="./Foundations_ Lesson 7_linkedlist_files/lesson_improvements-78e563e5ce2bc3b5712c4e046c3dd87a5c6333010479212b4bc3bc20e0716890.js.download"></script>
+<button aria-label="Give feedback on how to improve this lesson (opens in pop-up)" class="no-padding-no-border" id="lesson_improvement_button" data-original-title="" title="">
+  <img id="lesson_improvement_edit_icon" src="./Foundations_ Lesson 7_linkedlist_files/edit-17a0dd4e531097da2d8ce81e189c5ef73933a342b7023b70517e45e22b0e1635.svg" alt="">
+</button>
+<div class="col-xs-10 col-xs-offset-1">
+  <h1 class="__page_heading">Lesson 7: Data Structures—Linked List #1</h1>
+  <p class="__text_body">In this challenge you will build, use and transform a complex data structure: a Linked List. Specifically this challenge will be to <em>reverse a Linked List</em>. This challenge will also involve leveraging a new data structure, <em>a stack</em>, to help perform the reversal.</p>
+
+
+  
+  <br style="clear: both;">
+</div>
+  <link rel="stylesheet" media="screen" href="./Foundations_ Lesson 7_linkedlist_files/lesson_improvement-207d36fac766e1f85803a90af5d0dce9dae03d9f7e35c01ce41d906d04b7a089.css">
+<script src="./Foundations_ Lesson 7_linkedlist_files/lesson_improvements-78e563e5ce2bc3b5712c4e046c3dd87a5c6333010479212b4bc3bc20e0716890.js.download"></script>
+
+<div id="myLessonImprovementModal" class="modal fade" tabindex="-1" role="dialog" aria-label="Feedback form">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header lesson-improvement-title">
+        <button type="button" id="close_button" class="close close-btn -top" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <h1>Improve this University of Arizona Lesson</h1>
+      </div>
+      <div class="modal-body lesson-improvement-body">
+        <div id="lesson_improvement_suggestion">
+          <br>
+          <h2>Helping out is simple:</h2>
+          <br><br>
+          <ol class="lesson-improvement-ol">
+            <li>Copy &amp; paste the section that you want to improve into the field below.</li>
+            <li>Add your improvement to it.</li>
+            <li>Select the type of improvement from the drop-down list.</li>
+            <li>Hit submit.</li><br>
+          </ol>
+          <!-- form for the suggestion entry -->
+          <img class="lesson-improvement-avatar" src="./Foundations_ Lesson 7_linkedlist_files/avatar-1d1f2ed38f04215f5b7b57e3145be0efd34fbbcf3bdbfed8871041db7e74e67f.png" alt="">
+          <div class="new-suggestion-form">
+            <div id="new_suggestion_form_triangle"></div>
+            <form novalidate="novalidate" class="simple_form new_lesson_improvement" id="new_lesson_improvement" action="https://online.bootcampspot.com/lesson_improvements" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="23ANxMjaHixDnfW1N56nMd/QKCjxDRIymHbHqdH+FRkHqBelKc+p3Y2UkOK8KEkg72RQ4g1Y7M1omYrHxzyQCw==">
+              <div class="input hidden lesson_improvement_user_id"><input value="30831" class="hidden form-control" type="hidden" name="lesson_improvement[user_id]" id="lesson_improvement_user_id"></div>
+              <div class="input hidden lesson_improvement_course"><input value="foundations" class="hidden form-control" type="hidden" name="lesson_improvement[course]" id="lesson_improvement_course"></div>
+              <div class="input hidden lesson_improvement_lesson"><input value="7" class="hidden form-control" type="hidden" name="lesson_improvement[lesson]" id="lesson_improvement_lesson"></div>
+              <div class="input ckeditor required lesson_improvement_suggested_improvement"><textarea ckeditor="{:toolbar=&gt;&quot;Mini&quot;}" id="suggestion" class="ckeditor required form-control" name="lesson_improvement[suggested_improvement]" style="visibility: hidden; display: none;"></textarea><div id="cke_suggestion" class="cke_1 cke cke_reset cke_chrome cke_editor_suggestion cke_ltr cke_browser_webkit" dir="ltr" lang="en" role="application" aria-labelledby="cke_suggestion_arialbl"><span id="cke_suggestion_arialbl" class="cke_voice_label">Rich Text Editor, suggestion</span><div class="cke_inner cke_reset" role="presentation"><span id="cke_1_top" class="cke_top cke_reset_all" role="presentation" style="height: auto; user-select: none;"><span id="cke_12" class="cke_voice_label">Editor toolbars</span><span id="cke_1_toolbox" class="cke_toolbox" role="group" aria-labelledby="cke_12" onmousedown="return false;"><span id="cke_13" class="cke_toolbar" aria-labelledby="cke_13_label" role="toolbar"><span id="cke_13_label" class="cke_voice_label">Links</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_14" class="cke_button cke_button__link cke_button_off" href="javascript:void(&#39;Link&#39;)" title="Link (Ctrl+L)" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_14_label" aria-describedby="cke_14_description" aria-haspopup="false" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(2,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(4,this);return false;"><span class="cke_button_icon cke_button__link_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -528px;background-size:auto;">&nbsp;</span><span id="cke_14_label" class="cke_button_label cke_button__link_label" aria-hidden="false">Link</span><span id="cke_14_description" class="cke_button_label" aria-hidden="false">Keyboard shortcut Ctrl+L</span></a><a id="cke_15" class="cke_button cke_button__unlink cke_button_disabled " href="javascript:void(&#39;Unlink&#39;)" title="Unlink" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_15_label" aria-describedby="cke_15_description" aria-haspopup="false" aria-disabled="true" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(5,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(7,this);return false;"><span class="cke_button_icon cke_button__unlink_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -552px;background-size:auto;">&nbsp;</span><span id="cke_15_label" class="cke_button_label cke_button__unlink_label" aria-hidden="false">Unlink</span><span id="cke_15_description" class="cke_button_label" aria-hidden="false"></span></a><a id="cke_16" class="cke_button cke_button__anchor cke_button_off" href="javascript:void(&#39;Anchor&#39;)" title="Anchor" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_16_label" aria-describedby="cke_16_description" aria-haspopup="false" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(8,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(10,this);return false;"><span class="cke_button_icon cke_button__anchor_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -504px;background-size:auto;">&nbsp;</span><span id="cke_16_label" class="cke_button_label cke_button__anchor_label" aria-hidden="false">Anchor</span><span id="cke_16_description" class="cke_button_label" aria-hidden="false"></span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_17" class="cke_toolbar" aria-labelledby="cke_17_label" role="toolbar"><span id="cke_17_label" class="cke_voice_label">Basic Styles</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_18" class="cke_button cke_button__bold cke_button_off" href="javascript:void(&#39;Bold&#39;)" title="Bold (Ctrl+B)" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_18_label" aria-describedby="cke_18_description" aria-haspopup="false" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(11,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(13,this);return false;"><span class="cke_button_icon cke_button__bold_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -24px;background-size:auto;">&nbsp;</span><span id="cke_18_label" class="cke_button_label cke_button__bold_label" aria-hidden="false">Bold</span><span id="cke_18_description" class="cke_button_label" aria-hidden="false">Keyboard shortcut Ctrl+B</span></a><a id="cke_19" class="cke_button cke_button__italic cke_button_off" href="javascript:void(&#39;Italic&#39;)" title="Italic (Ctrl+I)" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_19_label" aria-describedby="cke_19_description" aria-haspopup="false" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(14,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(16,this);return false;"><span class="cke_button_icon cke_button__italic_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -48px;background-size:auto;">&nbsp;</span><span id="cke_19_label" class="cke_button_label cke_button__italic_label" aria-hidden="false">Italic</span><span id="cke_19_description" class="cke_button_label" aria-hidden="false">Keyboard shortcut Ctrl+I</span></a><a id="cke_20" class="cke_button cke_button__strike cke_button_off" href="javascript:void(&#39;Strikethrough&#39;)" title="Strikethrough" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_20_label" aria-describedby="cke_20_description" aria-haspopup="false" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(17,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(19,this);return false;"><span class="cke_button_icon cke_button__strike_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -72px;background-size:auto;">&nbsp;</span><span id="cke_20_label" class="cke_button_label cke_button__strike_label" aria-hidden="false">Strikethrough</span><span id="cke_20_description" class="cke_button_label" aria-hidden="false"></span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_21" class="cke_button cke_button__removeformat cke_button_off" href="javascript:void(&#39;Remove Format&#39;)" title="Remove Format" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_21_label" aria-describedby="cke_21_description" aria-haspopup="false" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(20,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(22,this);return false;"><span class="cke_button_icon cke_button__removeformat_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -792px;background-size:auto;">&nbsp;</span><span id="cke_21_label" class="cke_button_label cke_button__removeformat_label" aria-hidden="false">Remove Format</span><span id="cke_21_description" class="cke_button_label" aria-hidden="false"></span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_22" class="cke_toolbar" aria-labelledby="cke_22_label" role="toolbar"><span id="cke_22_label" class="cke_voice_label">Paragraph</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_23" class="cke_button cke_button__numberedlist cke_button_off" href="javascript:void(&#39;Insert/Remove Numbered List&#39;)" title="Insert/Remove Numbered List" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_23_label" aria-describedby="cke_23_description" aria-haspopup="false" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(23,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(25,this);return false;"><span class="cke_button_icon cke_button__numberedlist_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -648px;background-size:auto;">&nbsp;</span><span id="cke_23_label" class="cke_button_label cke_button__numberedlist_label" aria-hidden="false">Insert/Remove Numbered List</span><span id="cke_23_description" class="cke_button_label" aria-hidden="false"></span></a><a id="cke_24" class="cke_button cke_button__bulletedlist cke_button_off" href="javascript:void(&#39;Insert/Remove Bulleted List&#39;)" title="Insert/Remove Bulleted List" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_24_label" aria-describedby="cke_24_description" aria-haspopup="false" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(26,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(28,this);return false;"><span class="cke_button_icon cke_button__bulletedlist_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -600px;background-size:auto;">&nbsp;</span><span id="cke_24_label" class="cke_button_label cke_button__bulletedlist_label" aria-hidden="false">Insert/Remove Bulleted List</span><span id="cke_24_description" class="cke_button_label" aria-hidden="false"></span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_25" class="cke_button cke_button__outdent cke_button_disabled " href="javascript:void(&#39;Decrease Indent&#39;)" title="Decrease Indent" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_25_label" aria-describedby="cke_25_description" aria-haspopup="false" aria-disabled="true" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(29,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(31,this);return false;"><span class="cke_button_icon cke_button__outdent_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -456px;background-size:auto;">&nbsp;</span><span id="cke_25_label" class="cke_button_label cke_button__outdent_label" aria-hidden="false">Decrease Indent</span><span id="cke_25_description" class="cke_button_label" aria-hidden="false"></span></a><a id="cke_26" class="cke_button cke_button__indent cke_button_off" href="javascript:void(&#39;Increase Indent&#39;)" title="Increase Indent" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_26_label" aria-describedby="cke_26_description" aria-haspopup="false" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(32,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(34,this);return false;"><span class="cke_button_icon cke_button__indent_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -408px;background-size:auto;">&nbsp;</span><span id="cke_26_label" class="cke_button_label cke_button__indent_label" aria-hidden="false">Increase Indent</span><span id="cke_26_description" class="cke_button_label" aria-hidden="false"></span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_27" class="cke_button cke_button__blockquote cke_button_off" href="javascript:void(&#39;Block Quote&#39;)" title="Block Quote" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_27_label" aria-describedby="cke_27_description" aria-haspopup="false" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(35,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(37,this);return false;"><span class="cke_button_icon cke_button__blockquote_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -168px;background-size:auto;">&nbsp;</span><span id="cke_27_label" class="cke_button_label cke_button__blockquote_label" aria-hidden="false">Block Quote</span><span id="cke_27_description" class="cke_button_label" aria-hidden="false"></span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_28" class="cke_toolbar cke_toolbar_last" aria-labelledby="cke_28_label" role="toolbar"><span id="cke_28_label" class="cke_voice_label">pbckcode</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_29" class="cke_button cke_button__pbckcode cke_button_off" href="javascript:void(&#39;Add code&#39;)" title="Add code" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_29_label" aria-describedby="cke_29_description" aria-haspopup="false" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(38,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(40,this);return false;"><span class="cke_button_icon cke_button__pbckcode_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/pbckcode/icons/pbckcode.png?t=GB8C&#39;);background-position:0 0px;background-size:16px;">&nbsp;</span><span id="cke_29_label" class="cke_button_label cke_button__pbckcode_label" aria-hidden="false">Add code</span><span id="cke_29_description" class="cke_button_label" aria-hidden="false"></span></a></span><span class="cke_toolbar_end"></span></span></span></span><div id="cke_1_contents" class="cke_contents cke_reset" role="presentation" style="height: 200px;"><span id="cke_34" class="cke_voice_label">Press ALT 0 for help</span><iframe src="./Foundations_ Lesson 7_linkedlist_files/saved_resource.html" frameborder="0" class="cke_wysiwyg_frame cke_reset" title="Rich Text Editor, suggestion" aria-describedby="cke_34" tabindex="0" allowtransparency="true" style="width: 100%; height: 100%;"></iframe></div><span id="cke_1_bottom" class="cke_bottom cke_reset_all" role="presentation" style="user-select: none;"><span id="cke_1_resizer" class="cke_resizer cke_resizer_vertical cke_resizer_ltr" title="Resize" onmousedown="CKEDITOR.tools.callFunction(0, event)">◢</span><span id="cke_1_path_label" class="cke_voice_label">Elements path</span><span id="cke_1_path" class="cke_path" role="group" aria-labelledby="cke_1_path_label"><span class="cke_path_empty">&nbsp;</span></span></span></div></div></div>
+              <br>
+              <label for="lesson_improvement_category" class="lesson-improvement-category">What's your improvement related to?</label>
+              <div class="input select optional lesson_improvement_category"><select class="select optional form-control" name="lesson_improvement[category]" id="lesson_improvement_category"><option value=""></option>
+<option value="typo">typo</option>
+<option value="code snippets">code snippets</option>
+<option value="confusing wording">confusing wording</option>
+<option value="something else">something else</option></select></div>
+              <div id="down-arrow-icon"></div>
+
+              <div id="improvement_errors" class="hidden red-text">The suggested improvement can't be blank.</div>
+</form>          </div>
+        </div>
+        <div id="lesson_improvement_response" class="hidden">
+          <div class="text-center white-background">
+            <button type="button" id="bottom_close_button" class="close close-btn -bottom" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+            <br class="clr">
+            <i class="glyphicon glyphicon-ok-sign font-size-100"></i>
+            <br>
+            <h1 class="Open-Sans-Bold">Awesome!</h1>
+            <br>
+            <p class="Open-Sans-Bold">The entire University of Arizona Team sends you a high-five for helping out.</p>
+            <br>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer lesson-improvement-footer">
+        <div id="lesson_improvement_suggestion_footer">
+          <button class="comment-btn" id="lesson_improvement_submit_button">Submit</button>
+        </div>
+        <div id="lesson_improvement_response_footer" class="hidden">
+          <div class="blue-background text-center">
+            <br><br>
+            <button class="comment-btn lesson-improvement-button hide_lesson_improvement" data-dismiss="modal">Keep Coding</button>
+            <br><br>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<script>
+  setUpLessonImprovementSubmission("30831", "/lesson_improvements");
+</script>
+
+
+    <div class="col-xs-10 col-xs-offset-1">
+      <div class="well required-submission">
+    <p><strong>Note:</strong> This challenge is a graduation requirement.  You must store your solution on GitHub and submit the GitHub URL similar to App Submissions. The submission form can be found at the bottom of the page.</p>
+    <p>For a refresher on how to create a GitHub Repo, see <a href="https://online.bootcampspot.com/splurty/2">Splurty: Lesson 2</a>.</p>
+</div>
+    </div>
+  <div class="col-xs-10 col-xs-offset-1 col-sm-10 col-sm-offset-1 booyah-box">
+
+  <p>
+    In the previous assignments we focused on understanding how to use the ruby Array class, which provides a lot of functionality we were able to leverage for the image blur problem.  In this assignment we are going to implement data structures by hand, and we're only going to have the bare essentials to deal with.  Because of the nature of the problem, it is challenging.  We'll push you in the direction of how to think about solving it.
+
+  </p>
+  <br>
+  <h4>What Is a Linked List?</h4>
+  <p>
+    Before we implement and write algorithms with LinkedLists, let's take a moment to understand what this data structure actually is. A LinkedList is a node that has a specific value attached to it (which is sometimes called a payload), and a link to another node (or <code>nil</code> if there is no next item).
+  </p>
+
+  <p>
+    This article gives an overview of <a target="_blank" rel="noopener noreferrer" href="https://www.cs.cmu.edu/~adamchik/15-121/lectures/Linked%20Lists/linked%20lists.html">LinkedLists<span class="hidden-text">Link opens in new tab</span></a> and here's a graphical representation of the list of: <code>[12, 99, 37]</code>:
+  </p>
+  <br>
+
+  <div class="text-center">
+    <img class="img-responsive img-fluid" style="width: 50%; margin-left: auto; margin-right: auto;" alt="linked-list-image" src="./Foundations_ Lesson 7_linkedlist_files/linked_list-2ac990b15b9ca227efc4d5eb49c3dc80a6ad1bb7a60e84e508a296847a864909.png">
+  </div>
+
+  <br>
+
+  <p>
+    In the above example, the LinkedList starts with a node that contains the value 12 and is linked to the next node.  The next node contains the value 99 and is linked to the next node.  The next node has a value 37 and is linked to the <code>nil</code> value, which indicates it is the end of the list.
+  </p>
+
+  <p>
+    Despite the fact that a LinkedList is a complicated data structure, implementing it is quite easy.  The following ruby code implements a LinkedList:
+  </p>
+
+<pre class=" language-ruby"><code class=" language-ruby"><span class="token keyword">class</span> <span class="token class-name">LinkedListNode</span>
+  attr_accessor <span class="token symbol">:value</span><span class="token punctuation">,</span> <span class="token symbol">:next_node</span>
+
+  <span class="token keyword">def</span> <span class="token function">initialize</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> next_node<span class="token operator">=</span><span class="token keyword">nil</span><span class="token punctuation">)</span>
+    <span class="token variable">@value</span> <span class="token operator">=</span> value
+    <span class="token variable">@next_node</span> <span class="token operator">=</span> next_node
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span></code></pre>
+
+  <p>
+    Using that representation of a linked list, you can build the LinkedList, <code>node3</code>, which represents data from the diagram displayed above, like this:
+  </p>
+
+<pre class=" language-ruby"><code class=" language-ruby">node1 <span class="token operator">=</span> <span class="token constant">LinkedListNode</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">37</span><span class="token punctuation">)</span>
+node2 <span class="token operator">=</span> <span class="token constant">LinkedListNode</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">99</span><span class="token punctuation">,</span> node1<span class="token punctuation">)</span>
+node3 <span class="token operator">=</span> <span class="token constant">LinkedListNode</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">,</span> node2<span class="token punctuation">)</span></code></pre>
+
+  <h4>Dealing with a Linked List</h4>
+
+  <p>
+    A LinkedList is a <code>recursive datatype</code>.  This is because within one instance a LinkedListNode, the <code>next_node</code> can point to another LinkedListNode instance.
+  </p>
+
+  <p>
+    Writing code to output the contents of the LinkedList can be done by writing the following <code>print_values</code> method.  This method uses <code>recursion</code>, meaning the function calls itself (and also checks that it is able to call itself before it does).
+  </p>
+
+
+<pre class=" language-ruby"><code class=" language-ruby"><span class="token keyword">def</span> <span class="token function">print_values</span><span class="token punctuation">(</span>list_node<span class="token punctuation">)</span>
+  <span class="token keyword">if</span> list_node
+    print <span class="token string">"<span class="token interpolation"><span class="token delimiter tag">#{</span>list_node<span class="token punctuation">.</span>value<span class="token delimiter tag">}</span></span> --&gt; "</span>
+    <span class="token function">print_values</span><span class="token punctuation">(</span>list_node<span class="token punctuation">.</span>next_node<span class="token punctuation">)</span>
+  <span class="token keyword">else</span>
+    print <span class="token string">"nil\n"</span>
+    <span class="token keyword">return</span>
+  <span class="token keyword">end</span>
+<span class="token keyword">end</span>
+
+node1 <span class="token operator">=</span> <span class="token constant">LinkedListNode</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">37</span><span class="token punctuation">)</span>
+node2 <span class="token operator">=</span> <span class="token constant">LinkedListNode</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">99</span><span class="token punctuation">,</span> node1<span class="token punctuation">)</span>
+node3 <span class="token operator">=</span> <span class="token constant">LinkedListNode</span><span class="token punctuation">.</span><span class="token keyword">new</span><span class="token punctuation">(</span><span class="token number">12</span><span class="token punctuation">,</span> node2<span class="token punctuation">)</span>
+
+<span class="token function">print_values</span><span class="token punctuation">(</span>node3<span class="token punctuation">)</span></code></pre>
+
+  <p>
+    That code should produce an output that looks something like this:
+  </p>
+
+
+<pre class=" language-command"><code class="-line language-command">macbook-air:$ ruby code.rb
+12 --&gt; 99 --&gt; 37 --&gt; nil</code></pre>
+
+  <h3>Linked List #1: Reverse a Linked List Using a Stack</h3>
+  <p>
+    In this assignment, implement the <code>reverse_list</code> method such that when you run the following code:
+  </p>
+
+<pre class=" language-ruby"><code class=" language-ruby"><span class="token function">print_values</span><span class="token punctuation">(</span>node3<span class="token punctuation">)</span>
+
+puts <span class="token string">"-------"</span>
+
+revlist <span class="token operator">=</span> <span class="token function">reverse_list</span><span class="token punctuation">(</span>node3<span class="token punctuation">)</span>
+
+<span class="token function">print_values</span><span class="token punctuation">(</span>revlist<span class="token punctuation">)</span></code></pre>
+
+  <p>The following is the output in the terminal window:</p>
+
+
+<pre class=" language-command"><code class="-line language-command">macbook-air:$ ruby code.rb
+12 --&gt; 99 --&gt; 37 --&gt; nil
+------
+37 --&gt; 99 --&gt; 12 --&gt; nil</code></pre>
+
+  <p>
+    There are two main methods to solve this problem.
+  </p>
+
+  <h4>HINT: Use a Stack &amp; Iterative Code</h4>
+
+  <p>
+    There are two ways to solve this problem, but in this assignment we want you to write iterative code to reverse the LinkedList using a Stack.
+  </p>
+
+  <h4>What is a Stack?</h4>
+  <p>
+    Another data type exists that is called a <strong><a target="_blank" rel="noopener noreferrer" href="http://en.wikipedia.org/wiki/Stack_(abstract_data_type)">Stack<span class="hidden-text">Link opens in new tab</span></a></strong> that will make it easier to solve this conceptually.  A Stack is a data structure that is <code>Last-In-First-Out (LIFO)</code> and is the opposite of a queue.  Think about a Stack like you would think about a stack of plates if you were cooking and washing the dishes.  You will likely take the top plate off the stack, use it, eat your dinner, wash it and put it back on top of the stack.  You will keep pulling the top plate off the stack until more guests arrive.  If two people ate dinner together you would take the top two plates off the stack, use them, wash them, and put them back on top.
+  </p>
+
+  <p>
+    Here is a graphical representation of a Stack:
+  </p>
+  <br>
+
+  <div class="text-center">
+    <img width="250" src="./Foundations_ Lesson 7_linkedlist_files/stack-45a39cd163278b12c604fcdf0572ab30af11a4c5736ac6cace9d7b27314ceef7.png" alt="">
+  </div>
+
+  <h4>Implement a Stack</h4>
+  <p>
+    Implementing a stack is possible using only the LinkedList we implemented in the previous part of the assignment.
+  </p>
+  <p>
+    <strong>First implement a Stack using only the data type of a LinkedList.</strong>  Do not use an Array; that's cheating and cheating is bad. Fill in the blanks with the following code:
+  </p>
+
+<pre class=" language-ruby"><code class=" language-ruby"><span class="token keyword">class</span> <span class="token class-name">Stack</span>
+    attr_reader <span class="token symbol">:data</span>
+
+    <span class="token keyword">def</span> initialize
+        <span class="token variable">@data</span> <span class="token operator">=</span> <span class="token keyword">nil</span>
+    <span class="token keyword">end</span>
+
+    <span class="token comment" spellcheck="true"># Push a value onto the stack</span>
+    <span class="token keyword">def</span> <span class="token function">push</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+        <span class="token comment" spellcheck="true"># IMPLEMENT ME!</span>
+    <span class="token keyword">end</span>
+
+    <span class="token comment" spellcheck="true"># Pop an item off the stack.</span>
+    <span class="token comment" spellcheck="true"># Remove the last item that was pushed onto the</span>
+    <span class="token comment" spellcheck="true"># stack and return the value to the user</span>
+    <span class="token keyword">def</span> pop
+        <span class="token comment" spellcheck="true"># I RETURN A VALUE</span>
+    <span class="token keyword">end</span>
+
+<span class="token keyword">end</span></code></pre>
+
+  <h4>Implement the <code>reverse_list</code> ethod</h4>
+  <p>
+    As a hint to implement the reverse_list method, here's a place to start out.
+  </p>
+
+<pre class=" language-ruby"><code class=" language-ruby"><span class="token keyword">def</span> <span class="token function">reverse_list</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span>
+    <span class="token comment" spellcheck="true"># ADD CODE HERE</span>
+
+    <span class="token keyword">while</span> list
+        <span class="token comment" spellcheck="true"># ADD CODE HERE</span>
+        list <span class="token operator">=</span> list<span class="token punctuation">.</span>next_node
+    <span class="token keyword">end</span>
+
+    <span class="token comment" spellcheck="true"># ADD CODE HERE</span>
+<span class="token keyword">end</span></code></pre>
+
+  <p>
+    <strong>Hint</strong>: Within the <code>while loop</code> above, you can access the value of the current LinkedListNode by calling <code>list.value</code>.
+  </p>
+  <p>
+    This is a very tricky problem and it involves a couple of complicated data types.  Good luck!
+  </p>
+
+
+<!--
+<h4>Method 2: Mutation &amp; Recursion</h4>
+
+
+<p>
+You will want to change the direction the arrows point.  Think in the example above, make the node with a Payload of 12 have a next element of nil, change the element with a payload of 99 to have a next element of 12, change the element with the payload of 37 to have a next element to the element of 99.
+</p>
+
+<br /><br />
+<div class="text-center">
+<img src="/assets/ll-mutated-1ba8611e53b5ebf14d07753c7008b3d0f39ad5404fdde95509aed3f3eb2afc4b.png" alt="" />
+</div>
+
+<p>
+<strong>So with this method you'll want to change the value of the <code>next_node</code> as you traverse the list.</strong>
+</p>
+
+<p>
+    Here's a hint to get you started:
+</p>
+
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">reverse_list</span><span class="p">(</span><span class="n">list</span><span class="p">,</span> <span class="n">previous</span><span class="o">=</span><span class="kp">nil</span><span class="p">)</span>
+    <span class="c1"># do stuff</span>
+<span class="k">end</span>
+</pre></div>
+
+
+<h4>Make sure to use either the first method or the second: Don't mix and match methods</h4>
+<p>
+Mixing and matching will cause headaches.  Using recursion with a stack and mutation doesn't work.  Either:
+</p>
+
+<ul>
+<li>Use a Stack and iterative code to reverse the list</li>
+<li>Use recursion (or iteration, both will work) and mutate the node the <code>next_node</code> points to where the next should go.  Do not use a stack with this approach.</li>
+</ul>
+
+-->
+  <br>
+  <h4><strong>Hint!</strong></h4>
+  <p>
+    This problem will likely take you many hours to solve.  That's OK.  You should first try to solve this problem on your own without any hints for a few hours.  After you struggle for a while read <a target="_blank" rel="noopener noreferrer" href="http://www.ken-mazaika.ghost.io/reversing-a-linked-list-like-a-russian-doll/">this<span class="hidden-text">Link opens in new tab</span></a> blog post, which contains a hint about how to rethink the problem.
+  </p>
+  <br>
+
+  <h4><strong>Example of what these methods should do:</strong></h4>
+
+<pre class=" language-ruby"><code class=" language-ruby"><span class="token comment" spellcheck="true"># Creates a new Stack object</span>
+stack <span class="token operator">=</span> <span class="token constant">Stack</span><span class="token punctuation">.</span><span class="token keyword">new</span>
+
+<span class="token comment" spellcheck="true"># Pushes (adds) the number 1 to the empty stack</span>
+stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># Pushes the number 2 to the TOP of the stack</span>
+stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># Pops (removes) the TOP number from the stack (2)</span>
+puts stack<span class="token punctuation">.</span>pop
+<span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">2</span>
+
+<span class="token comment" spellcheck="true"># Pops the remaining number from the stack (1)</span>
+puts stack<span class="token punctuation">.</span>pop
+<span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token number">1</span>
+
+<span class="token comment" spellcheck="true"># Tries to pop the TOP number from the stack,</span>
+<span class="token comment" spellcheck="true"># but it is empty so it returns nil</span>
+puts stack<span class="token punctuation">.</span>pop
+<span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token keyword">nil</span></code></pre>
+
+  <br>
+
+  <h3 class="text-center">To Be Completed:</h3>
+  <br>
+  <ul>
+    <li>Implement a Stack</li>
+    <li>Reverse the LinkedList using iterative code</li>
+    <li>Read the blog post for hints</li>
+  </ul>
+
+
+  <br><br>
+
+ 
+    <script src="./Foundations_ Lesson 7_linkedlist_files/foundations-707db537e203faee13d416202828de60312279cc8ddb52bb75ef33c744005069.js.download"></script>
+
+
+      <div class="well pre-submit required-submission">
+        <h3 class="no-margin text-center">Submit Your Linked List #1 Solution for Review</h3>
+          <p class="required-warning"><strong>* This submission is a graduation requirement.</strong></p>
+        <p>You can only submit your coding challenge for review once, so make it count.</p> 
+        <p><strong>If you see error messages or have other problems with your solution, use Slack to get help, then fix your solution and come back to submit it here.</strong></p>        <p>After you submit your solution, your mentor will review your work with you in your next session.</p>    
+        <form id="challenge_submission_form" class="simple_form new_challenge_submission" novalidate="novalidate" action="https://online.bootcampspot.com/coding_challenge_submissions" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="23ANxMjaHixDnfW1N56nMd/QKCjxDRIymHbHqdH+FRkHqBelKc+p3Y2UkOK8KEkg72RQ4g1Y7M1omYrHxzyQCw==">
+          <div class="input hidden coding_challenge_submission_challenge_name"><input value="linked_list_#1" id="challenge_name" class="hidden form-control" type="hidden" name="coding_challenge_submission[challenge_name]"></div>
+          <div class="input url required coding_challenge_submission_github_url"><label class="url required control-label" for="github_url"><abbr title="required">*</abbr> Github url</label><input id="github_url" class="string url required form-control" type="url" name="coding_challenge_submission[github_url]"></div>
+          <div class="error_github_url __error" id="error_github_url" tabindex="1"></div>
+          <br>
+          <div class="input ckeditor optional coding_challenge_submission_message"><label class="ckeditor optional control-label" for="message">Please add additional notes as needed for your mentor.</label><textarea id="message" ckeditor="{:toolbar=&gt;&quot;Mini&quot;}" class="ckeditor optional form-control" name="coding_challenge_submission[message]" style="visibility: hidden; display: none;"></textarea><div id="cke_message" class="cke_2 cke cke_reset cke_chrome cke_editor_message cke_ltr cke_browser_webkit" dir="ltr" lang="en" role="application" aria-labelledby="cke_message_arialbl"><span id="cke_message_arialbl" class="cke_voice_label">Rich Text Editor, message</span><div class="cke_inner cke_reset" role="presentation"><span id="cke_2_top" class="cke_top cke_reset_all" role="presentation" style="height: auto; user-select: none;"><span id="cke_41" class="cke_voice_label">Editor toolbars</span><span id="cke_2_toolbox" class="cke_toolbox" role="group" aria-labelledby="cke_41" onmousedown="return false;"><span id="cke_42" class="cke_toolbar" aria-labelledby="cke_42_label" role="toolbar"><span id="cke_42_label" class="cke_voice_label">Links</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_43" class="cke_button cke_button__link cke_button_off" href="javascript:void(&#39;Link&#39;)" title="Link (Ctrl+L)" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_43_label" aria-describedby="cke_43_description" aria-haspopup="false" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(46,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(48,this);return false;"><span class="cke_button_icon cke_button__link_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -528px;background-size:auto;">&nbsp;</span><span id="cke_43_label" class="cke_button_label cke_button__link_label" aria-hidden="false">Link</span><span id="cke_43_description" class="cke_button_label" aria-hidden="false">Keyboard shortcut Ctrl+L</span></a><a id="cke_44" class="cke_button cke_button__unlink cke_button_disabled " href="javascript:void(&#39;Unlink&#39;)" title="Unlink" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_44_label" aria-describedby="cke_44_description" aria-haspopup="false" aria-disabled="true" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(49,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(51,this);return false;"><span class="cke_button_icon cke_button__unlink_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -552px;background-size:auto;">&nbsp;</span><span id="cke_44_label" class="cke_button_label cke_button__unlink_label" aria-hidden="false">Unlink</span><span id="cke_44_description" class="cke_button_label" aria-hidden="false"></span></a><a id="cke_45" class="cke_button cke_button__anchor cke_button_off" href="javascript:void(&#39;Anchor&#39;)" title="Anchor" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_45_label" aria-describedby="cke_45_description" aria-haspopup="false" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(52,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(54,this);return false;"><span class="cke_button_icon cke_button__anchor_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -504px;background-size:auto;">&nbsp;</span><span id="cke_45_label" class="cke_button_label cke_button__anchor_label" aria-hidden="false">Anchor</span><span id="cke_45_description" class="cke_button_label" aria-hidden="false"></span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_46" class="cke_toolbar" aria-labelledby="cke_46_label" role="toolbar"><span id="cke_46_label" class="cke_voice_label">Basic Styles</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_47" class="cke_button cke_button__bold cke_button_off" href="javascript:void(&#39;Bold&#39;)" title="Bold (Ctrl+B)" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_47_label" aria-describedby="cke_47_description" aria-haspopup="false" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(55,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(57,this);return false;"><span class="cke_button_icon cke_button__bold_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -24px;background-size:auto;">&nbsp;</span><span id="cke_47_label" class="cke_button_label cke_button__bold_label" aria-hidden="false">Bold</span><span id="cke_47_description" class="cke_button_label" aria-hidden="false">Keyboard shortcut Ctrl+B</span></a><a id="cke_48" class="cke_button cke_button__italic cke_button_off" href="javascript:void(&#39;Italic&#39;)" title="Italic (Ctrl+I)" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_48_label" aria-describedby="cke_48_description" aria-haspopup="false" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(58,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(60,this);return false;"><span class="cke_button_icon cke_button__italic_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -48px;background-size:auto;">&nbsp;</span><span id="cke_48_label" class="cke_button_label cke_button__italic_label" aria-hidden="false">Italic</span><span id="cke_48_description" class="cke_button_label" aria-hidden="false">Keyboard shortcut Ctrl+I</span></a><a id="cke_49" class="cke_button cke_button__strike cke_button_off" href="javascript:void(&#39;Strikethrough&#39;)" title="Strikethrough" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_49_label" aria-describedby="cke_49_description" aria-haspopup="false" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(61,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(63,this);return false;"><span class="cke_button_icon cke_button__strike_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -72px;background-size:auto;">&nbsp;</span><span id="cke_49_label" class="cke_button_label cke_button__strike_label" aria-hidden="false">Strikethrough</span><span id="cke_49_description" class="cke_button_label" aria-hidden="false"></span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_50" class="cke_button cke_button__removeformat cke_button_off" href="javascript:void(&#39;Remove Format&#39;)" title="Remove Format" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_50_label" aria-describedby="cke_50_description" aria-haspopup="false" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(64,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(66,this);return false;"><span class="cke_button_icon cke_button__removeformat_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -792px;background-size:auto;">&nbsp;</span><span id="cke_50_label" class="cke_button_label cke_button__removeformat_label" aria-hidden="false">Remove Format</span><span id="cke_50_description" class="cke_button_label" aria-hidden="false"></span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_51" class="cke_toolbar" aria-labelledby="cke_51_label" role="toolbar"><span id="cke_51_label" class="cke_voice_label">Paragraph</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_52" class="cke_button cke_button__numberedlist cke_button_off" href="javascript:void(&#39;Insert/Remove Numbered List&#39;)" title="Insert/Remove Numbered List" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_52_label" aria-describedby="cke_52_description" aria-haspopup="false" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(67,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(69,this);return false;"><span class="cke_button_icon cke_button__numberedlist_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -648px;background-size:auto;">&nbsp;</span><span id="cke_52_label" class="cke_button_label cke_button__numberedlist_label" aria-hidden="false">Insert/Remove Numbered List</span><span id="cke_52_description" class="cke_button_label" aria-hidden="false"></span></a><a id="cke_53" class="cke_button cke_button__bulletedlist cke_button_off" href="javascript:void(&#39;Insert/Remove Bulleted List&#39;)" title="Insert/Remove Bulleted List" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_53_label" aria-describedby="cke_53_description" aria-haspopup="false" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(70,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(72,this);return false;"><span class="cke_button_icon cke_button__bulletedlist_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -600px;background-size:auto;">&nbsp;</span><span id="cke_53_label" class="cke_button_label cke_button__bulletedlist_label" aria-hidden="false">Insert/Remove Bulleted List</span><span id="cke_53_description" class="cke_button_label" aria-hidden="false"></span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_54" class="cke_button cke_button__outdent cke_button_disabled " href="javascript:void(&#39;Decrease Indent&#39;)" title="Decrease Indent" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_54_label" aria-describedby="cke_54_description" aria-haspopup="false" aria-disabled="true" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(73,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(75,this);return false;"><span class="cke_button_icon cke_button__outdent_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -456px;background-size:auto;">&nbsp;</span><span id="cke_54_label" class="cke_button_label cke_button__outdent_label" aria-hidden="false">Decrease Indent</span><span id="cke_54_description" class="cke_button_label" aria-hidden="false"></span></a><a id="cke_55" class="cke_button cke_button__indent cke_button_off" href="javascript:void(&#39;Increase Indent&#39;)" title="Increase Indent" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_55_label" aria-describedby="cke_55_description" aria-haspopup="false" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(76,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(78,this);return false;"><span class="cke_button_icon cke_button__indent_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -408px;background-size:auto;">&nbsp;</span><span id="cke_55_label" class="cke_button_label cke_button__indent_label" aria-hidden="false">Increase Indent</span><span id="cke_55_description" class="cke_button_label" aria-hidden="false"></span></a><span class="cke_toolbar_separator" role="separator"></span><a id="cke_56" class="cke_button cke_button__blockquote cke_button_off" href="javascript:void(&#39;Block Quote&#39;)" title="Block Quote" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_56_label" aria-describedby="cke_56_description" aria-haspopup="false" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(79,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(81,this);return false;"><span class="cke_button_icon cke_button__blockquote_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/icons.png?t=GB8C&#39;);background-position:0 -168px;background-size:auto;">&nbsp;</span><span id="cke_56_label" class="cke_button_label cke_button__blockquote_label" aria-hidden="false">Block Quote</span><span id="cke_56_description" class="cke_button_label" aria-hidden="false"></span></a></span><span class="cke_toolbar_end"></span></span><span id="cke_57" class="cke_toolbar cke_toolbar_last" aria-labelledby="cke_57_label" role="toolbar"><span id="cke_57_label" class="cke_voice_label">pbckcode</span><span class="cke_toolbar_start"></span><span class="cke_toolgroup" role="presentation"><a id="cke_58" class="cke_button cke_button__pbckcode cke_button_off" href="javascript:void(&#39;Add code&#39;)" title="Add code" tabindex="0" hidefocus="true" role="button" aria-labelledby="cke_58_label" aria-describedby="cke_58_description" aria-haspopup="false" onkeydown="if (event.key === &#39;Tab&#39;) { return null } else { if (event.key === &#39;Tab&#39;) { return null } else { return CKEDITOR.tools.callFunction(82,event); } }" onfocus="null" onclick="CKEDITOR.tools.callFunction(84,this);return false;"><span class="cke_button_icon cke_button__pbckcode_icon" style="background-image:url(&#39;https://online.bootcampspot.com/ckeditor/plugins/pbckcode/icons/pbckcode.png?t=GB8C&#39;);background-position:0 0px;background-size:16px;">&nbsp;</span><span id="cke_58_label" class="cke_button_label cke_button__pbckcode_label" aria-hidden="false">Add code</span><span id="cke_58_description" class="cke_button_label" aria-hidden="false"></span></a></span><span class="cke_toolbar_end"></span></span></span></span><div id="cke_2_contents" class="cke_contents cke_reset" role="presentation" style="height: 200px;"><span id="cke_63" class="cke_voice_label">Press ALT 0 for help</span><iframe src="./Foundations_ Lesson 7_linkedlist_files/saved_resource(1).html" frameborder="0" class="cke_wysiwyg_frame cke_reset" style="width: 100%; height: 100%;" title="Rich Text Editor, message" aria-describedby="cke_63" tabindex="0" allowtransparency="true"></iframe></div><span id="cke_2_bottom" class="cke_bottom cke_reset_all" role="presentation" style="user-select: none;"><span id="cke_2_resizer" class="cke_resizer cke_resizer_vertical cke_resizer_ltr" title="Resize" onmousedown="CKEDITOR.tools.callFunction(44, event)">◢</span><span id="cke_2_path_label" class="cke_voice_label">Elements path</span><span id="cke_2_path" class="cke_path" role="group" aria-labelledby="cke_2_path_label"><span class="cke_path_empty">&nbsp;</span></span></span></div></div></div>
+          <br>
+          <input type="submit" name="commit" value="Submit" class="btn btn-primary">
+</form>      </div>
+      <div class="well post-submit hide" id="post-submit-show" tabindex="1">
+        <img alt="completed challenge icon" src="./Foundations_ Lesson 7_linkedlist_files/goal-cf222fe70a0daef19b7f587e3f76e08856332929fe06a8d12381f89a7a7a63d6.svg">
+        <p>Thank you for submitting your Linked List #1 solution for review!</p> 
+      </div>
+
+<script>
+$(function(){
+  submitForm("/coding_challenge_submissions");
+});
+</script>
+  <div class="well">
+    <h3 class="text-center">Review Your Code with Your Mentor</h3>
+    <p>
+    Review your solution to this challenge with your mentor during your next mentorship session. Make sure you get the thumbs up from your mentor before moving on to the next coding challenge! 
+    </p>
+  </div>
+  <br>
+
+
+  <br>
+
+<div id="error-message-container"></div>
+
+<div class="mark-lesson-completion-status" id="lesson_complete" style="display:none;">
+  <a class="btn btn-primary mark-lesson-as-complete-or-not" role="button" href="https://online.bootcampspot.com/foundations/7#">
+    <span class="invisible">(Button Changes Focus)</span> MARK LESSON 7 COMPLETE
+</a></div>
+
+  <div class="mark-lesson-completion-status" id="next_lesson_button" style="">
+    <a class="btn btn-primary mark-lesson-as-complete-or-not" role="button" href="https://online.bootcampspot.com/foundations/8">
+      GO TO NEXT LESSON <span class="glyphicon glyphicon-arrow-right"></span>
+</a>  </div>
+
+<div class="mark-lesson-completion-status mark-lesson-as-not-complete" id="lesson_incomplete" style="">
+  <a class="" role="button" href="https://online.bootcampspot.com/foundations/7#">
+    <span class="invisible">(Button Changes Focus)</span> or mark lesson 7 not complete
+</a></div>
+
+<br style="clear:both;">
+<br style="clear:both;">
+
+<script>
+  $(document).ready(function(){
+    var my_data = {"id":373389,"user_id":30831,"name":"foundations","number":7,"status":true,"created_at":"2019-07-29T00:17:24.106-04:00","updated_at":"2019-07-29T00:17:24.120-04:00"};
+
+    // If there is no lesson_status or the status of it is false
+    if (my_data === null || my_data.status == false)
+    {
+      $('#lesson_complete').show();
+    } else if (my_data.status == true)
+    {
+      if ("8" != "") {
+        $('#next_lesson_button').show();
+      } else {
+        $('#go_to_courses_button').show();
+      }
+      $('#lesson_incomplete').show();
+    }
+
+    // PATCH request for marking lesson complete
+    $('#lesson_complete').click(function(event){
+      event.preventDefault();
+
+      var data = {
+        _method: 'PATCH',
+        lesson_status: {
+          user_id: 30831,
+          status: true,
+          name: "foundations",
+          number: 7
+        }
+      }
+
+
+
+      $.ajax({
+        url: "/lesson_statuses/foundations/7",
+        type: 'POST',
+        data: data
+      }).success(function(){
+        my_data = {"id":373389,"user_id":30831,"name":"foundations","number":7,"status":true,"created_at":"2019-07-29T00:17:24.106-04:00","updated_at":"2019-07-29T00:17:24.120-04:00"};
+        $('#lesson_complete').hide("slow");
+        if ("8" != "") {
+          $('#next_lesson_button').show(() => $('#next_lesson_button > a').focus());
+        } else {
+          $('#go_to_courses_button').show(() => $('#go_to_courses_button > a').focus());
+        }
+        $('#lesson_incomplete').show("slow");
+      }).fail(function(){
+        $('#error-message-container').empty().append("<p class='form-error-message-notification'>There was an issue marking your lesson as complete. Please refresh the page and try again.</p>");
+      });
+    });
+
+    // PATCH request for marking lesson incomplete
+    $('#lesson_incomplete').click(function(event){
+      event.preventDefault();
+
+      var data = {
+        "_method": 'PATCH',
+        lesson_status: {
+          user_id: 30831,
+          status: false,
+          name: "foundations",
+          number: 7
+        }
+      }
+
+      $.ajax({
+        url: "/lesson_statuses/foundations/7",
+        type: 'POST',
+        data: data
+      }).success(function(){
+        my_data = {"id":373389,"user_id":30831,"name":"foundations","number":7,"status":true,"created_at":"2019-07-29T00:17:24.106-04:00","updated_at":"2019-07-29T00:17:24.120-04:00"};
+        $('#lesson_incomplete').hide("slow");
+        $('#lesson_complete').show(400, () => $('#lesson_complete > a').focus());
+        $('#next_lesson_button').hide("slow");
+        $('#go_to_courses_button').hide("slow");
+      }).fail(function(){
+        $('#error-message-container').empty().append("<p class='form-error-message-notification'>There was an issue marking your lesson as incomplete. Please contact us at bwilson@bootcampspot.com</p>");
+      });
+    });
+  });
+</script>
+
+  <br style="clear:both;"><br><br><br>
+</div>
+
+  
+  <script src="./Foundations_ Lesson 7_linkedlist_files/floating_nav-3fa5297423146bf9c8a599361ff1e3c072868e0cde99d79e53923a839b55869f.js.download"></script>
+
+<div class="floating-nav full-width affix" data-spy="affix">
+  <ul class="nav navbar-nav">
+      <li>
+        <a href="https://online.bootcampspot.com/foundations/6">
+          <img class="img-responsive nav-icon" alt="" src="./Foundations_ Lesson 7_linkedlist_files/icon_previouslesson-f6994ad560dbeae27afb8c06fbcc5bd136d3d078b0c57732362f4b2c6a1273d8.png"> Previous Lesson
+</a>      </li>
+
+    <!-- <li class='float-right active-section'>
+      0 Active
+    </li> -->
+  </ul>
+</div>
+
+</div>
+
+    </div>
+
+    <script src="./Foundations_ Lesson 7_linkedlist_files/firebase.js.download"></script>
+    <!-- Don't show hellobar if user is signed in or if on applicants pages -->
+
+      <script id="IntercomSettingsScriptTag">
+  window.intercomSettings = {"app_id":"cynq5t9i","email":"anadan20182019@gmail.com","custom_data":{"utm_campaign_first_click":null,"utm_medium_first_click":null,"utm_source_first_click":null,"utm_campaign_last_click":null,"utm_medium_last_click":null,"utm_source_last_click":null},"user_hash":"b8ea9b7d8e20fb3df5b20d04a17a6e92b39c1ff7281145f6918573de80f04dd6"};
+</script>
+<script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/cynq5t9i';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}};})()</script>
+
+      <!-- checks and updates session count -->
+<script>
+  document.addEventListener("visibilitychange", handleChange("/user_account_data/30831"));
+</script>
+      <link rel="stylesheet" media="screen" href="./Foundations_ Lesson 7_linkedlist_files/expired_token_modal-753930820465856ca990478414db2a94179cb5bf6289ab138bab0e4635684d1d.css">
+
+<div class="modal" id="sign-out-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="header">Learning Session Expired</h4>
+        <h5 class="subheader">Please sign in again.</h5>
+      </div>
+      <div class="modal-body">
+        <p>You have been signed out.<br><br>
+For security reasons, you must sign in again to continue.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="signInBtn" class="btn btn-primary">SIGN IN AGAIN</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>initTimerFunctions()</script>
+
+
+    <!-- GOOGLE REMARKETING TAGS -->
+    <!--
+Remarketing tags may not be associated with personally identifiable information or placed on pages related to sensitive categories. See more information and instructions on how to setup the tag on: http://google.com/ads/remarketingsetup
+-->
+
+<!--
+This script can be used to add custom params
+to the remarketing tag
+-->
+
+<!--
+<script type="text/javascript">
+  var google_tag_params = {
+    site_location: 'marketing_pages'
+  };
+</script>
+-->
+
+<script type="text/javascript">
+  /* <![CDATA[ */
+  var google_conversion_id = 927357968;
+  var google_remarketing_only = true;
+
+  // Enable line if we want to use custom params
+  // var google_custom_params = window.google_tag_params;
+  /* ]]> */
+</script>
+<div style="display:none">
+  <script type="text/javascript" src="./Foundations_ Lesson 7_linkedlist_files/f(1).txt">
+  </script>
+</div>
+
+<noscript>
+  <div style="display:inline;">
+  <img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/927357968/?guid=ON&amp;script=0"/>
+  </div>
+</noscript>
+      <script>setUpForDaysRemainingNotification("30831", "Your access expires in 2 days. ");</script>
+  
+
+<div id="fancybox-tmp"></div><div id="fancybox-loading"><div></div></div><div id="fancybox-overlay"></div><div id="fancybox-wrap"><div id="fancybox-outer"><div class="fancybox-bg" id="fancybox-bg-n"></div><div class="fancybox-bg" id="fancybox-bg-ne"></div><div class="fancybox-bg" id="fancybox-bg-e"></div><div class="fancybox-bg" id="fancybox-bg-se"></div><div class="fancybox-bg" id="fancybox-bg-s"></div><div class="fancybox-bg" id="fancybox-bg-sw"></div><div class="fancybox-bg" id="fancybox-bg-w"></div><div class="fancybox-bg" id="fancybox-bg-nw"></div><div id="fancybox-content"></div><a id="fancybox-close"></a><div id="fancybox-title"></div><a href="javascript:;" id="fancybox-left"><span class="fancy-ico" id="fancybox-left-ico"></span></a><a href="javascript:;" id="fancybox-right"><span class="fancy-ico" id="fancybox-right-ico"></span></a></div></div><iframe id="intercom-frame" style="position: absolute !important; opacity: 0 !important; width: 1px !important; height: 1px !important; top: 0 !important; left: 0 !important; border: none !important; display: block !important; z-index: -1 !important;" aria-hidden="true" tabindex="-1" src="./Foundations_ Lesson 7_linkedlist_files/saved_resource(2).html"></iframe><div id="intercom-css-container"><style data-emotion="intercom-global"></style></div><div id="intercom-container" class="intercom-namespace"><style>html.intercom-mobile-messenger-active,html.intercom-mobile-messenger-active > body,html.intercom-modal-open,#intercom-container-body{overflow:hidden !important;}html.intercom-mobile-messenger-active,html.intercom-mobile-messenger-active > body{position:static !important;}html.intercom-mobile-messenger-active > body{height:0 !important;margin:0 !important;}iframe#intercom-frame{position:absolute !important;opacity:0 !important;width:1px !important;height:1px !important;top:0 !important;left:0 !important;border:none !important;display:block !important;z-index:-1 !important;}</style><div class="intercom-app" aria-live="polite"><div id="intercom-modal-container"></div></div></div></body></html>

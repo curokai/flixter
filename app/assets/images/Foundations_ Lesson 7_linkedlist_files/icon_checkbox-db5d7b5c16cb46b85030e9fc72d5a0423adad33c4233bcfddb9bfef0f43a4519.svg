@@ -1,0 +1,19 @@
+<svg width="38" height="38" viewBox="0 0 38 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>checkbox-active</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="matrix(2 0 0 2 22942 8420)" figma:type="canvas">
+<g id="checkbox-active" figma:type="vector">
+<use xlink:href="#path0_fill" transform="translate(-11471 -4209.01)" fill="#FFFFFF"/>
+<mask id="mask0_outline_ins">
+<use xlink:href="#path0_fill" fill="white" transform="translate(-11471 -4209.01)"/>
+</mask>
+<g mask="url(#mask0_outline_ins)">
+<use xlink:href="#path1_stroke_2x" transform="translate(-11471 -4209.01)" fill="#979797"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" fill-rule="evenodd" d="M 0 4C 0 1.79086 1.79086 0 4 0L 14 0C 16.2091 0 18 1.79086 18 4L 18 14C 18 16.2091 16.2091 18 14 18L 4 18C 1.79086 18 0 16.2091 0 14L 0 4Z"/>
+<path id="path1_stroke_2x" d="M 4 1L 14 1L 14 -1L 4 -1L 4 1ZM 17 4L 17 14L 19 14L 19 4L 17 4ZM 14 17L 4 17L 4 19L 14 19L 14 17ZM 1 14L 1 4L -1 4L -1 14L 1 14ZM 4 -1C 1.23858 -1 -1 1.23858 -1 4L 1 4C 1 2.34315 2.34315 1 4 1L 4 -1ZM 14 1C 15.6569 1 17 2.34315 17 4L 19 4C 19 1.23858 16.7614 -1 14 -1L 14 1ZM 17 14C 17 15.6569 15.6569 17 14 17L 14 19C 16.7614 19 19 16.7614 19 14L 17 14ZM 4 17C 2.34315 17 1 15.6569 1 14L -1 14C -1 16.7614 1.23858 19 4 19L 4 17Z"/>
+</defs>
+</svg>

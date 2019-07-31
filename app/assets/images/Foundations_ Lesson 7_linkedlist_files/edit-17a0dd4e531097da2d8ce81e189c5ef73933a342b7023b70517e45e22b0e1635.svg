@@ -1,0 +1,18 @@
+<svg width="36" height="36" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>edit</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="matrix(2 0 0 2 20684 8874)">
+<g id="edit">
+<g id="Rectangle">
+<use xlink:href="#path0_stroke" transform="matrix(0.707107 0.707107 -0.707107 0.707107 -10330.2 -4435.01)" fill="#979797"/>
+</g>
+<g id="Line">
+<use xlink:href="#path1_stroke" transform="matrix(0.707107 0.707107 -0.707107 0.707107 -10332.3 -4432.89)" fill="#979797"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_stroke" d="M 0 0L 0 -1C -0.552285 -1 -1 -0.552285 -1 2.22045e-16L 0 0ZM 6 0L 7 0C 7 -0.552285 6.55228 -1 6 -1L 6 0ZM 6 14L 6.8 14.6C 6.92982 14.4269 7 14.2164 7 14L 6 14ZM 3 18L 2.2 18.6C 2.38885 18.8518 2.68524 19 3 19C 3.31476 19 3.61115 18.8518 3.8 18.6L 3 18ZM 0 14L -1 14C -1 14.2164 -0.929822 14.4269 -0.8 14.6L 0 14ZM 0 1L 6 1L 6 -1L 0 -1L 0 1ZM 5 0L 5 14L 7 14L 7 0L 5 0ZM 5.2 13.4L 2.2 17.4L 3.8 18.6L 6.8 14.6L 5.2 13.4ZM 3.8 17.4L 0.8 13.4L -0.8 14.6L 2.2 18.6L 3.8 17.4ZM 1 14L 1 0L -1 0L -1 14L 1 14Z"/>
+<path id="path1_stroke" d="M 0 0L -1 0L -1 2L 0 2L 0 0ZM 6 2L 7 2L 7 0L 6 0L 6 2ZM 0 2L 6 2L 6 0L 0 0L 0 2Z"/>
+</defs>
+</svg>

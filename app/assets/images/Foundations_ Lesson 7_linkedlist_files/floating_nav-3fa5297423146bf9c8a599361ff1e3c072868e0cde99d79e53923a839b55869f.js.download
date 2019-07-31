@@ -1,0 +1,1 @@
+$(function(){$("#go_to_forum").click(function(){event.preventDefault(),$("html, body").scrollTo("#forum_section",{duration:1500})}),$("li#question").click(function(){$("html, body").animate({scrollTop:$("#forum_section").offset().top},1e3)})});

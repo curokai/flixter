@@ -1,0 +1,18 @@
+<svg width="38" height="38" viewBox="0 0 38 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:figma="http://www.figma.com/figma/ns">
+<title>Group</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="matrix(2 0 0 2 22942 8660)" figma:type="canvas">
+<g id="Group" figma:type="frame">
+<g id="checkbox-active" figma:type="vector">
+<use xlink:href="#path0_fill" transform="translate(-11471 -4329.01)" fill="#4161FF"/>
+</g>
+<g id="checkbox-selected" figma:type="vector">
+<use xlink:href="#path1_stroke" transform="translate(-11466 -4323.01)" fill="#FFFFFF"/>
+</g>
+</g>
+</g>
+<defs>
+<path id="path0_fill" fill-rule="evenodd" d="M 0 4C 0 1.79086 1.79086 0 4 0L 14 0C 16.2091 0 18 1.79086 18 4L 18 14C 18 16.2091 16.2091 18 14 18L 4 18C 1.79086 18 0 16.2091 0 14L 0 4Z"/>
+<path id="path1_stroke" d="M 0.4 1.7C 0.234315 1.47909 -0.0790861 1.43431 -0.3 1.6C -0.520914 1.76569 -0.565685 2.07909 -0.4 2.3L 0.4 1.7ZM 3 6L 2.6 6.3C 2.69173 6.4223 2.83436 6.49592 2.98719 6.49984C 3.14002 6.50375 3.28624 6.43754 3.38411 6.32009L 3 6ZM 8.38411 0.320092C 8.56089 0.107954 8.53223 -0.207329 8.32009 -0.384111C 8.10795 -0.560893 7.79267 -0.532231 7.61589 -0.320092L 8.38411 0.320092ZM -0.4 2.3L 2.6 6.3L 3.4 5.7L 0.4 1.7L -0.4 2.3ZM 3.38411 6.32009L 8.38411 0.320092L 7.61589 -0.320092L 2.61589 5.67991L 3.38411 6.32009Z"/>
+</defs>
+</svg>
