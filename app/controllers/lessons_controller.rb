@@ -19,5 +19,5 @@ class LessonsController < ApplicationController
       render plain: "Unauthorized", status: :unauthorized
     end
   end
-
+end
 end
