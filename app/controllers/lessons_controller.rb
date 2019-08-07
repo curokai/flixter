@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
   before_action :authenticate_user!
-  before_action :require_authorized_for_current_course], only: [:show]
+  before_action :require_authorized_for_current_course, only: [:show]
 
   
   def show
@@ -19,5 +19,5 @@ class LessonsController < ApplicationController
       render plain: "Unauthorized", status: :unauthorized
     end
   end
-
+end
 end
